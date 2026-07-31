@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  video:
+    container_name: video
+    image: vespeng/video:latest
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=production

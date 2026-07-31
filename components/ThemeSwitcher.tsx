@@ -1,0 +1,162 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { useTheme } from './ThemeProvider';
+
+export function ThemeSwitcher() {
+  const { theme, setTheme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // 点击外部关闭下拉菜单
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // 获取当前主题对应的图标
+  const getCurrentIcon = () => {
+    switch (theme) {
+      case 'light':
+        return (
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        );
+      case 'dark':
+        return (
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        );
+      default: // system
+        return (
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        );
+    }
+  };
+
+  const themeOptions = [
+    { value: 'light', label: '浅色模式', icon: (
+      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    )},
+    { value: 'dark', label: '深色模式', icon: (
+      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    )},
+    { value: 'system', label: '跟随系统', icon: (
+      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      </svg>
+    )},
+  ];
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      {/* 主按钮 */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`
+          flex items-center justify-center
+          w-9 h-9 sm:w-10 sm:h-10
+          rounded-[var(--radius-full)]
+          bg-[var(--glass-bg)]
+          backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)]
+          border border-[var(--glass-border)]
+          text-[var(--text-color)]
+          hover:bg-[color-mix(in_srgb,var(--accent-color)_10%,transparent)]
+          transition-all duration-200
+          cursor-pointer
+          shadow-[var(--shadow-sm)]
+          ${isOpen ? 'ring-2 ring-[var(--accent-color)]/30' : ''}
+        `}
+        aria-label="切换主题"
+        title="切换主题"
+      >
+        {getCurrentIcon()}
+      </button>
+
+      {/* 下拉菜单 */}
+      {isOpen && (
+        <div className="
+          absolute top-full right-0 mt-2
+          min-w-[140px]
+          bg-[var(--glass-bg)]
+          backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)]
+          border border-[var(--glass-border)]
+          rounded-[var(--radius-lg)]
+          shadow-lg
+          py-1.5
+          z-50
+          animate-in fade-in slide-in-from-top-2 duration-200
+        ">
+          {themeOptions.map((option) => (
+            <button
+              key={option.value}
+              onClick={() => {
+                setTheme(option.value as 'light' | 'dark' | 'system');
+                setIsOpen(false);
+              }}
+              className={`
+                w-full flex items-center gap-3 px-3 py-2
+                text-sm
+                transition-colors duration-150
+                cursor-pointer
+                ${theme === option.value
+                  ? 'bg-[var(--accent-color)]/10 text-[var(--accent-color)]'
+                  : 'text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--text-color)_5%,transparent)]'
+                }
+              `}
+            >
+              <span className={`flex-shrink-0 ${theme === option.value ? 'text-[var(--accent-color)]' : ''}`}>
+                {option.icon}
+              </span>
+              <span>{option.label}</span>
+              {theme === option.value && (
+                <svg className="w-4 h-4 ml-auto text-[var(--accent-color)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,187 @@
+/* Base Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Pointer Cursor for Interactive Elements */
+button,
+[role="button"],
+[type="button"],
+[type="submit"],
+[type="reset"],
+a[href],
+label[for],
+select,
+.cursor-pointer {
+    cursor: pointer;
+}
+
+html {
+    scroll-behavior: auto;
+}
+
+/* Focus Styles */
+*:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: var(--radius-2xl);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+[class*="rounded-full"]:focus-visible {
+    border-radius: var(--radius-full);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.5);
+    background: color-mix(in srgb, var(--glass-bg) 80%, transparent);
+    border-radius: var(--radius-full);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 122, 255, 0.6);
+    background: color-mix(in srgb, var(--accent-color) 60%, transparent);
+    background-clip: padding-box;
+}
+
+.search-history-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-history-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.search-history-dropdown::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.5);
+    background: color-mix(in srgb, var(--glass-bg) 80%, transparent);
+    border-radius: var(--radius-full);
+}
+
+/* Utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.scrollbar-hide,
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Performance Optimizations */
+nav:where(.sticky, .fixed),
+.sticky,
+.fixed {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* [class*="grid"]>* {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 400px;
+} */
+
+[class*="grid"]>a {
+    animation: fadeInUp 0.2s ease-out;
+}
+
+@supports (content-visibility: auto) {
+    img {
+        content-visibility: auto;
+    }
+}
+
+img {
+    transform: translateZ(0);
+}
+
+body.scrolling * {
+    pointer-events: none !important;
+}
+
+.group:hover img,
+.glass-card,
+nav {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+[class*="badge"],
+[class*="Badge"] {
+    contain: layout style;
+}
+
+.search-history-dropdown {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* TV Mode Styles */
+body.tv-mode [data-focusable]:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 4px;
+    box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.2);
+    transform: scale(1.03);
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+body.tv-mode {
+    font-size: 18px;
+}
+
+body.tv-mode [data-focusable] {
+    min-height: 48px;
+    min-width: 48px;
+}
+
+body.tv-mode [class*="grid"] {
+    gap: 1.25rem;
+}
+
+body.tv-mode [class*="gap-3"] {
+    gap: 1.25rem;
+}
+
+body.tv-mode [class*="gap-4"] {
+    gap: 1.5rem;
+}

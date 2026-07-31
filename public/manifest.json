@@ -1,0 +1,24 @@
+{
+    "name": "KVideo - 视频聚合平台",
+    "short_name": "KVideo",
+    "description": "多源视频聚合搜索和播放平台",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "/icon.png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "entertainment",
+        "video"
+    ],
+    "lang": "zh-CN",
+    "dir": "ltr",
+    "scope": "/",
+    "prefer_related_applications": false
+}
