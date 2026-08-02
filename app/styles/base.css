@@ -22,6 +22,7 @@ select,
 
 html {
     scroll-behavior: auto;
+    scrollbar-gutter: stable;
 }
 
 /* Focus Styles */

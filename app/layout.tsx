@@ -25,8 +25,8 @@ import path from 'path';
 const DEFAULT_VIDEOTOGETHER_SCRIPT_URL =
   'https://fastly.jsdelivr.net/gh/VideoTogether/VideoTogether@latest/release/extension.website.user.js';
 
-// Server Component specifically for reading env/file (async for best practices)
-async function AdKeywordsWrapper() {
+// Server Component specifically for reading env/file
+function AdKeywordsWrapper() {
   let keywords: string[] = [];
 
   try {
@@ -39,7 +39,7 @@ async function AdKeywordsWrapper() {
         : path.join(process.cwd(), keywordsFile);
 
       try {
-        const content = await fs.promises.readFile(filePath, 'utf-8');
+        const content = fs.readFileSync(filePath, 'utf-8');
         keywords = content.split(/[\n,]/).map((k: string) => k.trim()).filter((k: string) => k);
         console.log(`[AdFilter] Loaded ${keywords.length} keywords from file: ${filePath}`);
       } catch (fileError: unknown) {
@@ -69,7 +69,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: siteConfig.title,
-    description: siteConfig.description,
+    // description: siteConfig.description,
     icons: {
       icon: siteIconSrc,
     },

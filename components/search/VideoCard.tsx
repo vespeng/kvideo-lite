@@ -162,13 +162,13 @@ export const VideoCard = memo<VideoCardProps>(({
                     </div>
 
                     {/* Info */}
-                    <div className="p-3 flex-1 flex flex-col">
+                    <div className="px-2.5 pt-2 pb-1.5 flex-1 flex flex-col">
                         {(() => {
                             const { cleanTitle } = parseVideoTitle(video.vod_name);
 
                             return (
                                 <>
-                                    <h4 className="font-semibold text-sm text-[var(--text-color)] line-clamp-2 min-h-[2.5rem] mb-1">
+                                    <h4 className="font-semibold text-sm text-[var(--text-color)] line-clamp-2 min-h-[1.25rem] leading-snug mb-1">
                                         {cleanTitle}
                                     </h4>
                                     <div className="flex items-center gap-1.5 flex-wrap">
@@ -186,7 +186,7 @@ export const VideoCard = memo<VideoCardProps>(({
                                         )}
                                     </div>
                                     {video.vod_lang && (
-                                        <p className="text-xs text-[var(--text-color-secondary)] mt-1">
+                                        <p className="text-xs text-[var(--text-color-secondary)] mt-0.5 leading-tight">
                                             {video.vod_lang}
                                         </p>
                                     )}

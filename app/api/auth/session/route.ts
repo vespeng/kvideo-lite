@@ -1,4 +1,4 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   createSessionStatusResponse,
   logoutResponse,
@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     return await createSessionStatusResponse(request);
   } catch (error) {
     if (error instanceof ManagedAuthStorageError) {
-      return Response.json(
+      return NextResponse.json(
         { authenticated: false, error: 'Managed authentication storage is unavailable' },
         { status: 503 },
       );

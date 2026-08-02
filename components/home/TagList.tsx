@@ -36,6 +36,8 @@ interface TagListProps {
     onTagDelete: (tagId: string) => void;
     onDragEnd: (event: DragEndEvent) => void;
     onJustAddedTagHandled: () => void;
+    contentType?: 'movie' | 'tv';
+    onContentTypeChange?: (type: 'movie' | 'tv') => void;
     recommendTag?: RecommendTagConfig;
 }
 
@@ -48,6 +50,8 @@ export function TagList({
     onTagDelete,
     onDragEnd,
     onJustAddedTagHandled,
+    contentType,
+    onContentTypeChange,
     recommendTag,
 }: TagListProps) {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -107,66 +111,101 @@ export function TagList({
 
     const activeTag = tags.find((t) => t.id === activeId);
 
+    const isRecommendActive = !!recommendTag?.isSelected;
+    const hasTypeRow = !!(contentType && onContentTypeChange) || !!recommendTag;
+    const showContentTags = !isRecommendActive;
+
+    const chipButtonClass = (active: boolean) => `
+        px-6 py-2.5 text-sm font-semibold transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none flex items-center gap-1.5
+        ${active
+            ? 'bg-[var(--accent-color)] text-white shadow-md scale-105'
+            : 'bg-[var(--glass-bg)] backdrop-blur-xl text-[var(--text-color)] border border-[var(--glass-border)] hover:border-[var(--accent-color)] hover:scale-105'
+        }
+    `;
+
     return (
-        <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-        >
-            <div
-                ref={scrollContainerRef}
-                className={`mb-8 flex items-center gap-3 pb-3 pt-2 px-1 scrollbar-hide ${
-                    showTagManager
-                        ? 'flex-wrap overflow-visible'
-                        : 'overflow-x-auto'
-                }`}
-            >
-                {/* Recommendation Tag — non-draggable, rendered before sortable tags */}
-                {recommendTag && (
-                    <div className="relative flex-shrink-0">
+        <>
+            {/* Type Row: Movie / TV / Recommend — non-draggable, sits above content tags */}
+            {hasTypeRow && (
+                <div className={`${showContentTags ? 'mb-4' : 'mb-8'} flex items-center gap-3 flex-wrap pt-2 px-1`}>
+                    {contentType && onContentTypeChange && (
+                        <>
+                            <button
+                                type="button"
+                                onClick={() => onContentTypeChange('movie')}
+                                className={chipButtonClass(contentType === 'movie' && !isRecommendActive)}
+                            >
+                                电影
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => onContentTypeChange('tv')}
+                                className={chipButtonClass(contentType === 'tv' && !isRecommendActive)}
+                            >
+                                电视剧
+                            </button>
+                        </>
+                    )}
+                    {recommendTag && (
                         <button
                             type="button"
                             onClick={recommendTag.onSelect}
-                            className={`
-                                px-6 py-2.5 text-sm font-semibold transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none flex items-center gap-1.5
-                                ${recommendTag.isSelected
-                                    ? 'bg-[var(--accent-color)] text-white shadow-md scale-105'
-                                    : 'bg-[var(--glass-bg)] backdrop-blur-xl text-[var(--text-color)] border border-[var(--glass-border)] hover:border-[var(--accent-color)] hover:scale-105'
-                                }
-                            `}
+                            disabled={showTagManager}
+                            className={`${chipButtonClass(isRecommendActive)} ${
+                                showTagManager ? 'opacity-40 cursor-not-allowed pointer-events-none' : ''
+                            }`}
                         >
                             <Icons.Sparkles size={14} />
                             {recommendTag.label}
                         </button>
-                    </div>
-                )}
-                <SortableContext
-                    items={tags.map((t) => t.id)}
-                    strategy={showTagManager ? rectSortingStrategy : horizontalListSortingStrategy}
-                >
-                    {tags.map((tag) => (
-                        <SortableTag
-                            key={tag.id}
-                            tag={tag}
-                            selectedTag={selectedTag}
-                            showTagManager={showTagManager}
-                            onTagSelect={onTagSelect}
-                            onTagDelete={onTagDelete}
-                        />
-                    ))}
-                </SortableContext>
-            </div>
+                    )}
+                </div>
+            )}
 
-            <DragOverlay>
-                {activeId && activeTag ? (
-                    <div className="relative flex-shrink-0 animate-jiggle">
-                        <button className="px-6 py-2.5 text-sm font-semibold whitespace-nowrap rounded-[var(--radius-full)] bg-[var(--accent-color)] text-white shadow-xl scale-110 cursor-grabbing border border-transparent">
-                            {activeTag.label}
-                        </button>
+            {/* Content Tags Row — hidden when "为你推荐" is active */}
+            {showContentTags && (
+                <DndContext
+                    sensors={sensors}
+                    collisionDetection={closestCenter}
+                    onDragStart={handleDragStart}
+                    onDragEnd={handleDragEnd}
+                >
+                    <div
+                        ref={scrollContainerRef}
+                        className={`mb-8 flex items-center gap-3 pb-3 pt-2 px-1 scrollbar-hide ${
+                            showTagManager
+                                ? 'flex-wrap overflow-visible'
+                                : 'overflow-x-auto'
+                        }`}
+                    >
+                        <SortableContext
+                            items={tags.map((t) => t.id)}
+                            strategy={showTagManager ? rectSortingStrategy : horizontalListSortingStrategy}
+                        >
+                            {tags.map((tag) => (
+                                <SortableTag
+                                    key={tag.id}
+                                    tag={tag}
+                                    selectedTag={selectedTag}
+                                    showTagManager={showTagManager}
+                                    onTagSelect={onTagSelect}
+                                    onTagDelete={onTagDelete}
+                                />
+                            ))}
+                        </SortableContext>
                     </div>
-                ) : null}
-            </DragOverlay>
-        </DndContext>
+
+                    <DragOverlay>
+                        {activeId && activeTag ? (
+                            <div className="relative flex-shrink-0 animate-jiggle">
+                                <button className="px-6 py-2.5 text-sm font-semibold whitespace-nowrap rounded-[var(--radius-full)] bg-[var(--accent-color)] text-white shadow-xl scale-110 cursor-grabbing border border-transparent">
+                                    {activeTag.label}
+                                </button>
+                            </div>
+                        ) : null}
+                    </DragOverlay>
+                </DndContext>
+            )}
+        </>
     );
 }

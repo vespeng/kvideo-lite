@@ -41,7 +41,7 @@ function ViewerNotice() {
   );
 }
 
-export function AdminGate({ children, fallback }: { children: React.ReactNode; fallback?: React.ReactNode }) {
+export function AdminGate({ children, fallback }: { children: React.ReactNode; fallback?: React.ReactElement }) {
   if (!isAdmin()) return fallback || <ViewerNotice />;
   return <>{children}</>;
 }

@@ -18,21 +18,22 @@ import {
 } from '@/lib/auth/permissions';
 
 function withNodeEnv<T>(value: string | undefined, callback: () => T): T {
-  const previous = process.env.NODE_ENV;
+  const env = process.env as Record<string, string | undefined>;
+  const previous = env.NODE_ENV;
 
   if (value === undefined) {
-    delete process.env.NODE_ENV;
+    delete env.NODE_ENV;
   } else {
-    process.env.NODE_ENV = value;
+    env.NODE_ENV = value;
   }
 
   try {
     return callback();
   } finally {
     if (previous === undefined) {
-      delete process.env.NODE_ENV;
+      delete env.NODE_ENV;
     } else {
-      process.env.NODE_ENV = previous;
+      env.NODE_ENV = previous;
     }
   }
 }

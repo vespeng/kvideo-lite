@@ -25,6 +25,8 @@ interface TagManagerProps {
   onDragEnd: (event: DragEndEvent) => void;
   onJustAddedTagHandled: () => void;
   isLoadingTags?: boolean;
+  contentType?: 'movie' | 'tv';
+  onContentTypeChange?: (type: 'movie' | 'tv') => void;
   recommendTag?: RecommendTagConfig;
 }
 
@@ -43,6 +45,8 @@ export function TagManager({
   onDragEnd,
   onJustAddedTagHandled,
   isLoadingTags,
+  contentType,
+  onContentTypeChange,
   recommendTag,
 }: TagManagerProps) {
   return (
@@ -92,6 +96,8 @@ export function TagManager({
           onTagDelete={onTagDelete}
           onDragEnd={onDragEnd}
           onJustAddedTagHandled={onJustAddedTagHandled}
+          contentType={contentType}
+          onContentTypeChange={onContentTypeChange}
           recommendTag={recommendTag}
         />
       )}
