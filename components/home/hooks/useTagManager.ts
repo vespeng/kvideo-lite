@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { DragEndEvent } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
 import type { Tag } from '../SortableTag';
@@ -31,6 +31,7 @@ export function useTagManager() {
     const [newTagInput, setNewTagInput] = useState('');
     const [showTagManager, setShowTagManager] = useState(false);
     const [justAddedTag, setJustAddedTag] = useState(false);
+    const isFirstLoadRef = useRef(true);
 
     // Persist content type preference
     useEffect(() => {
@@ -54,7 +55,11 @@ export function useTagManager() {
             }
 
             // If no saved tags, fetch from Douban
-            setIsLoadingTags(true);
+            // Only show loading indicator on initial load; on content type switches,
+            // keep existing tags visible to avoid a jarring empty gap.
+            if (isFirstLoadRef.current) {
+                setIsLoadingTags(true);
+            }
             try {
                 const response = await fetch(`/api/douban/tags?type=${contentType}`);
                 const data = await response.json();
@@ -65,9 +70,10 @@ export function useTagManager() {
                         value: label,
                     }));
 
-                    setTags(ensureDefaultTag(mappedTags));
-                    // Also save to localStorage to avoid repeated fetches if desired
-                    // Actually, let's just keep them in memory for now unless they customize
+                    const finalTags = ensureDefaultTag(mappedTags);
+                    setTags(finalTags);
+                    // Cache to localStorage so subsequent content type switches are instant
+                    localStorage.setItem(storageKey, JSON.stringify(finalTags));
                 } else {
                     setTags([DEFAULT_TAG]);
                 }
@@ -80,6 +86,7 @@ export function useTagManager() {
         };
 
         loadTags();
+        isFirstLoadRef.current = false;
         setSelectedTag(DEFAULT_TAG.id);
     }, [contentType, storageKey]);
 
@@ -122,7 +129,9 @@ export function useTagManager() {
                     label,
                     value: label,
                 }));
-                setTags(ensureDefaultTag(mappedTags));
+                const finalTags = ensureDefaultTag(mappedTags);
+                setTags(finalTags);
+                localStorage.setItem(storageKey, JSON.stringify(finalTags));
             } else {
                 setTags([DEFAULT_TAG]);
             }

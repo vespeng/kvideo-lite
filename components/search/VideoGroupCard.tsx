@@ -205,16 +205,16 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
                     </div>
 
                     {/* Info */}
-                    <div className="p-3 flex-1 flex flex-col">
+                    <div className="px-2 pt-1.5 pb-1 flex flex-col">
                         {(() => {
                             const { cleanTitle } = parseVideoTitle(name);
 
                             return (
                                 <>
-                                    <h4 className="font-semibold text-sm text-[var(--text-color)] line-clamp-2 min-h-[2.5rem] mb-1">
+                                    <h4 className="font-semibold text-sm text-[var(--text-color)] line-clamp-2 min-h-[2.5em] leading-snug">
                                         {cleanTitle}
                                     </h4>
-                                    <div className="flex items-center gap-1.5 flex-wrap">
+                                    <div className="flex items-center gap-1.5 flex-wrap mt-1">
                                         {resolution ? (
                                             <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold text-white ${resolution.color}`}>
                                                 {resolution.label}
@@ -226,7 +226,7 @@ export const VideoGroupCard = memo<VideoGroupCardProps>(({
                                         ) : null}
                                     </div>
                                     {representative.vod_lang && (
-                                        <p className="text-xs text-[var(--text-color-secondary)] mt-1">
+                                        <p className="text-xs text-[var(--text-color-secondary)] mt-0.5 leading-tight">
                                             {representative.vod_lang}
                                         </p>
                                     )}
