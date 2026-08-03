@@ -92,7 +92,7 @@ export function PremiumContent({ onSearch }: PremiumContentProps) {
                 onDragEnd={handleDragEnd}
                 onJustAddedTagHandled={() => setJustAddedTag(false)}
                 recommendTag={hasHistory ? {
-                    label: '为你推荐',
+                    label: '推荐',
                     isSelected: effectiveRecommendSelected,
                     onSelect: handleRecommendSelect,
                 } : undefined}

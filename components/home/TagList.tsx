@@ -162,7 +162,7 @@ export function TagList({
                 </div>
             )}
 
-            {/* Content Tags Row — hidden when "为你推荐" is active */}
+            {/* Content Tags Row — hidden when "推荐" is active */}
             {showContentTags && (
                 <DndContext
                     sensors={sensors}

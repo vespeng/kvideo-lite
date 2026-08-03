@@ -1,7 +1,7 @@
 /**
  * PopularFeatures - Main component for popular movies section
  * Displays Douban movie recommendations with tag filtering and infinite scroll.
- * Includes personalized "为你推荐" tag when user has 2+ watched items.
+ * Includes personalized "推荐" tag when user has 2+ watched items.
  */
 
 'use client';
@@ -121,7 +121,7 @@ export function PopularFeatures({ onSearch }: PopularFeaturesProps) {
         contentType={contentType}
         onContentTypeChange={handleContentTypeChange}
         recommendTag={hasHistory ? {
-          label: '为你推荐',
+          label: '推荐',
           isSelected: effectiveRecommendSelected,
           onSelect: handleRecommendSelect,
         } : undefined}
