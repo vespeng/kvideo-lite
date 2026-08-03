@@ -63,10 +63,11 @@ export function usePopularMovies(selectedTag: string, tags: any[], contentType: 
     const [page, setPage] = useState(0);
     // Guard to prevent the cache-save effect from writing during a cache restore
     const isRestoringRef = useRef(false);
+    // Tracks the latest request so stale fetches can be discarded during rapid tag switching
+    const requestIdRef = useRef(0);
 
     const loadMovies = useCallback(async (tag: string, pageStart: number, append = false) => {
-        if (loading) return;
-
+        const requestId = ++requestIdRef.current;
         setLoading(true);
         try {
             const tagValue = tags.find(t => t.id === tag)?.value || '热门';
@@ -79,17 +80,28 @@ export function usePopularMovies(selectedTag: string, tags: any[], contentType: 
             const data = await response.json();
             const newMovies = data.subjects || [];
 
+            // Drop stale results if the user switched tags during the fetch
+            if (requestIdRef.current !== requestId) return;
+
             setMovies(prev => append ? [...prev, ...newMovies] : newMovies);
             setHasMore(newMovies.length === PAGE_LIMIT);
+            // Update page after a successful fetch so a stale request can't corrupt pagination
+            setPage(Math.floor(pageStart / PAGE_LIMIT));
         } catch (error) {
+            if (requestIdRef.current !== requestId) return;
             console.error('Failed to load movies:', error);
             setHasMore(false);
         } finally {
-            setLoading(false);
+            if (requestIdRef.current === requestId) {
+                setLoading(false);
+            }
         }
-    }, [loading, tags, contentType]);
+    }, [tags, contentType]);
 
     useEffect(() => {
+        // Invalidate any in-flight fetch from a previous tag/type so it can't overwrite current results
+        requestIdRef.current++;
+
         // Try cache first to avoid redundant fetches when switching back to a visited tag
         if (selectedTag) {
             const cache = loadPopularCache();
@@ -100,6 +112,8 @@ export function usePopularMovies(selectedTag: string, tags: any[], contentType: 
                 setMovies(cachedEntry.movies);
                 setHasMore(cachedEntry.hasMore);
                 setPage(cachedEntry.page);
+                // Reset loading in case a previous tag's fetch is still in-flight
+                setLoading(false);
                 return;
             }
         }
@@ -135,7 +149,8 @@ export function usePopularMovies(selectedTag: string, tags: any[], contentType: 
         loading,
         page,
         onLoadMore: (nextPage) => {
-            setPage(nextPage);
+            // page is updated inside loadMovies after a successful fetch,
+            // so a stale loadMore can't advance the pagination state
             loadMovies(selectedTag, nextPage * PAGE_LIMIT, true);
         },
     });
