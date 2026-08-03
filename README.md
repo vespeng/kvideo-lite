@@ -1,12 +1,8 @@
 # Video - 私人影视聚合平台
 
-基于 [KVideo](https://github.com/KuekHaoYang/KVideo) 二次开发的私人影视聚合平台，在保留核心功能的基础上进行了**功能精简**和**界面美化优化**，提供更简洁清爽的使用体验。
-
-支持多源搜索、HLS 播放、IPTV 直播等功能。
-
-**项目地址**: [https://github.com/vespeng/video](https://github.com/vespeng/video)
-
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js) ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss) ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+基于 [KVideo](https://github.com/KuekHaoYang/KVideo) 二次开发的私人影视聚合平台，在保留核心功能的基础上进行了**功能精简**和**界面美化优化**，提供更简洁清爽的使用体验。
 
 ## 核心功能
 
