@@ -155,11 +155,28 @@ export function usePopularMovies(selectedTag: string, tags: any[], contentType: 
         },
     });
 
+    // Force a cache-bypassing refresh of the current tag (e.g. re-clicking the active tag)
+    const refresh = useCallback(() => {
+        // Drop the cache entry for the current tag/type so the refresh actually re-fetches
+        const cache = loadPopularCache();
+        const cacheKey = `${contentType}:${selectedTag}`;
+        delete cache[cacheKey];
+        savePopularCache(cache);
+        // Invalidate any in-flight fetch
+        requestIdRef.current++;
+        // Reset and refetch
+        setPage(0);
+        setMovies([]);
+        setHasMore(true);
+        loadMovies(selectedTag, 0, false);
+    }, [selectedTag, contentType, loadMovies]);
+
     return {
         movies,
         loading,
         hasMore,
         prefetchRef,
         loadMoreRef,
+        refresh,
     };
 }

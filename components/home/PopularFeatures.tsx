@@ -65,6 +65,7 @@ export function PopularFeatures({ onSearch }: PopularFeaturesProps) {
     hasMore,
     prefetchRef,
     loadMoreRef,
+    refresh,
   } = usePopularMovies(
     effectiveRecommendSelected ? '' : selectedTag,
     tags,
@@ -84,6 +85,11 @@ export function PopularFeatures({ onSearch }: PopularFeaturesProps) {
   const handleRegularTagSelect = (tagId: string) => {
     if (tagId === 'custom_高级' || tags.find(t => t.id === tagId)?.label === '高级') {
       window.location.href = '/premium';
+      return;
+    }
+    // Re-clicking the active tag forces a cache-bypassing refresh
+    if (tagId === selectedTag && !effectiveRecommendSelected) {
+      refresh();
       return;
     }
     setIsRecommendSelected(false);
