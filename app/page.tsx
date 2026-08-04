@@ -45,7 +45,7 @@ function HomePage() {
       <Navbar onReset={handleReset} onOpenHistory={() => setIsHistoryOpen(true)} />
 
       {/* Search Form - Separate from navbar */}
-      <div className="max-w-7xl mx-auto px-4 mt-6 mb-8 relative" style={{
+      <div className="max-w-[1200px] mx-auto px-4 mt-6 mb-8 relative" style={{
         transform: 'translate3d(0, 0, 0)',
         zIndex: 1000
       }}>
@@ -62,7 +62,7 @@ function HomePage() {
       </div>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 pb-20">
+      <main className="max-w-[1200px] mx-auto px-4 pb-20">
         {/* Results Section */}
         {(results.length >= 1 || (!loading && results.length > 0)) && (
           <SearchResults
