@@ -1,8 +1,24 @@
-# Video - 私人影视聚合平台
+# KVideo Lite - 视频聚合平台（精简版）
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js) ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss) ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-基于 [KVideo](https://github.com/KuekHaoYang/KVideo) 二次开发的私人影视聚合平台，在保留核心功能的基础上进行了**功能精简**和**界面美化优化**，提供更简洁清爽的使用体验。
+基于 [KVideo](https://github.com/KuekHaoYang/KVideo) 二次开发的 **Lite 精简版**视频聚合平台。
+
+本仓库基于 KVideo **4.9.18** 版本进行二次开发，在保留核心功能的基础上进行了：
+
+- **大量精简**：移除冗余模块，降低部署与维护复杂度；
+- **界面美化**：优化交互与视觉体验，提供更简洁清爽的界面；
+- **功能补充**：针对实际使用场景补充了若干实用功能。
+
+> ⚠️ **维护说明**：本精简版仓库后续将**独立维护**，不再与原版（KVideo）进行版本同步，更新节奏与功能取舍以本仓库为准，请知悉。
+
+> 📖 **文档说明**：本项目对原技术文档做了大幅精简，**仅保留部署与使用所必要的核心内容**。如需查阅完整、详细的技术文档，请移步 [原项目仓库](https://github.com/KuekHaoYang/KVideo) 查看。
+
+> 💡 **完整功能**：如需使用原项目的全部功能特性，请前往 [原项目仓库](https://github.com/KuekHaoYang/KVideo) 查看与使用。
+
+> 🙏 **特别感谢**：本项目的全部基础功能与核心实现均源自 [KuekHaoYang](https://github.com/KuekHaoYang) 的 [KVideo](https://github.com/KuekHaoYang/KVideo) 原项目，在此对原作者致以诚挚的感谢。
+
+> ⚖️ **资源与免责声明**：本仓库**不包含任何影视资源内容**，所有视频源、IPTV 直播源等资源均需用户自行查找、整理并导入。本项目仅供学习与技术研究之用，若因使用本项目导入或播放的内容涉嫌违规、违法，相关责任由使用者自行承担，与本项目及作者本人无关。
 
 ## 核心功能
 
@@ -15,6 +31,7 @@
 - **响应式设计**：桌面/移动端/TV 全适配
 - **PWA 支持**：可安装为独立应用
 - **跨设备同步**：基于 Redis 的配置同步（可选）
+- **移动端手势**：支持长按倍速播放，屏幕亮度及音量控制
 
 ## 快速部署
 
@@ -22,7 +39,7 @@
 
 ```bash
 # 最简启动
-docker run -d -p 3000:3000 --name video vespeng/video:latest
+docker run -d -p 3000:3000 --name kvideo-lite vespeng/kvideo-lite:latest
 
 # 完整配置示例
 docker run -d -p 3000:3000 \
@@ -36,8 +53,8 @@ docker run -d -p 3000:3000 \
 ### Node.js 部署
 
 ```bash
-git clone https://github.com/vespeng/video.git
-cd video
+git clone https://github.com/vespeng/kvideo-lite.git
+cd kvideo-lite
 npm install
 npm run build
 npm start
@@ -63,16 +80,12 @@ npm start
 | `UPSTASH_REDIS_REST_URL` | Redis REST URL（用于托管账户和数据同步） | - |
 | `UPSTASH_REDIS_REST_TOKEN` | Redis REST Token | - |
 
-**账户角色**：`super_admin`（超级管理员）、`admin`（管理员）、`viewer`（观众）
-
-**可用权限**：`source_management`、`account_management`、`danmaku_api`、`data_management`、`player_settings`、`danmaku_appearance`、`view_settings`、`iptv_access`
-
 ### 站点自定义
 
 | 变量名 | 说明 | 默认值 |
 |--------|------|--------|
-| `NEXT_PUBLIC_SITE_NAME` | 站点名称 | `KVideo` |
-| `NEXT_PUBLIC_SITE_TITLE` | 浏览器标题 | `KVideo - 视频聚合平台` |
+| `NEXT_PUBLIC_SITE_NAME` | 站点名称 | `KVideo Lite` |
+| `NEXT_PUBLIC_SITE_TITLE` | 浏览器标题 | `KVideo Lite - 视频聚合平台` |
 | `SITE_ICON_FILE` | Docker 图标文件路径 | - |
 | `SITE_ICON_URL` | Docker 图标 URL | - |
 
@@ -127,9 +140,9 @@ npm start
 ### Docker
 
 ```bash
-docker stop video && docker rm video
-docker pull vespeng/video:latest
-docker run -d -p 3000:3000 --name video vespeng/video:latest
+docker stop kvideo-lite && docker rm kvideo-lite
+docker pull vespeng/kvideo-lite:latest
+docker run -d -p 3000:3000 --name kvideo-lite vespeng/kvideo-lite:latest
 ```
 
 ### Node.js
@@ -138,6 +151,10 @@ docker run -d -p 3000:3000 --name video vespeng/video:latest
 git pull origin main
 npm install && npm run build && npm start
 ```
+
+### Vercel / Cloudflare
+
+本地重新构建并上传
 
 ## 常见问题
 

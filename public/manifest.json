@@ -1,6 +1,6 @@
 {
-    "name": "KVideo - 视频聚合平台",
-    "short_name": "KVideo",
+    "name": "KVideo Lite - 视频聚合平台",
+    "short_name": "KVideo Lite",
     "description": "多源视频聚合搜索和播放平台",
     "start_url": "/",
     "display": "standalone",

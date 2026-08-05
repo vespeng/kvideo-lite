@@ -63,7 +63,7 @@ export function Navbar({ onReset, isPremiumMode = false, onOpenHistory }: Navbar
                             </div>
                             <div className="flex flex-col min-w-0">
                                 <h1 className="text-lg sm:text-2xl font-bold text-[var(--text-color)] truncate">{siteConfig.name}</h1>
-                                {/* <p className="text-xs text-[var(--text-color-secondary)] hidden sm:block truncate">{siteConfig.description}</p> */}
+                                <p className="text-xs text-[var(--text-color-secondary)] hidden sm:block truncate">{siteConfig.description}</p>
                             </div>
                         </Link>
 
