@@ -22,7 +22,16 @@ select,
 
 html {
     scroll-behavior: auto;
+    /* 让 html 成为滚动容器并始终预留滚动条槽位，
+       避免切换页面时因滚动条出现/消失导致内容宽度抖动 */
+    overflow-y: scroll;
     scrollbar-gutter: stable;
+}
+
+body {
+    /* 与 html 一致，确保滚动条槽位在所有情况下稳定 */
+    scrollbar-gutter: stable;
+    min-height: 100vh;
 }
 
 /* Focus Styles */
@@ -46,8 +55,16 @@ select:focus-visible {
 }
 
 /* Scrollbar Styles */
+/* 柔和的中性灰滚动条：基于文字次要色，浅色/深色下都柔和且可见 */
+/* Firefox 滚动条 */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--text-color-secondary) 35%, transparent) transparent;
+}
+
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -55,17 +72,27 @@ select:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.5);
-    background: color-mix(in srgb, var(--glass-bg) 80%, transparent);
+    background: color-mix(in srgb, var(--text-color-secondary) 30%, transparent);
     border-radius: var(--radius-full);
     border: 2px solid transparent;
     background-clip: padding-box;
+    transition: background-color 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 122, 255, 0.6);
-    background: color-mix(in srgb, var(--accent-color) 60%, transparent);
+    background: color-mix(in srgb, var(--text-color-secondary) 55%, transparent);
     background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: color-mix(in srgb, var(--accent-color) 70%, transparent);
+    background-clip: padding-box;
+}
+
+/* 搜索历史下拉等内部细滚动条 */
+.search-history-dropdown {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--text-color-secondary) 35%, transparent) transparent;
 }
 
 .search-history-dropdown::-webkit-scrollbar {
@@ -77,9 +104,15 @@ select:focus-visible {
 }
 
 .search-history-dropdown::-webkit-scrollbar-thumb {
-    background: rgba(128, 128, 128, 0.5);
-    background: color-mix(in srgb, var(--glass-bg) 80%, transparent);
+    background: color-mix(in srgb, var(--text-color-secondary) 30%, transparent);
     border-radius: var(--radius-full);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+.search-history-dropdown::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--text-color-secondary) 55%, transparent);
+    background-clip: padding-box;
 }
 
 /* Utilities */
