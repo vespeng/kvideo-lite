@@ -1,6 +1,5 @@
 'use client';
 
-import { SearchLoadingAnimation } from '@/components/SearchLoadingAnimation';
 import { SearchBox } from './SearchBox';
 
 interface SearchFormProps {
@@ -37,18 +36,6 @@ export function SearchForm({
         placeholder={placeholder}
         isPremium={isPremium}
       />
-
-      {/* Loading Animation */}
-      {isLoading && (
-        <div className="mt-4">
-          <SearchLoadingAnimation
-            currentSource={currentSource}
-            checkedSources={checkedSources}
-            totalSources={totalSources}
-            onCancel={onCancelSearch}
-          />
-        </div>
-      )}
     </div>
   );
 }

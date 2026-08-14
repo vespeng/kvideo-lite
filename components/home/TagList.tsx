@@ -198,7 +198,7 @@ export function TagList({
                     <DragOverlay>
                         {activeId && activeTag ? (
                             <div className="relative flex-shrink-0 animate-jiggle">
-                                <button className="px-6 py-2.5 text-sm font-semibold whitespace-nowrap rounded-[var(--radius-full)] bg-[var(--accent-color)] text-white shadow-xl scale-110 cursor-grabbing border border-transparent">
+                                <button className="px-4 py-1.5 text-xs font-medium whitespace-nowrap rounded-[var(--radius-full)] bg-[var(--accent-color)] text-white shadow-xl scale-110 cursor-grabbing border border-transparent">
                                     {activeTag.label}
                                 </button>
                             </div>

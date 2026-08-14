@@ -60,6 +60,13 @@ function PremiumHomePage() {
                     />
                 )}
 
+                {/* Searching - no results yet */}
+                {loading && hasSearched && results.length === 0 && (
+                    <div className="flex justify-center py-20">
+                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-[var(--accent-color)] border-t-transparent"></div>
+                    </div>
+                )}
+
                 {/* No Results */}
                 {!loading && hasSearched && results.length === 0 && (
                     <NoResults onReset={handleReset} />

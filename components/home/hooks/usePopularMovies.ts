@@ -78,12 +78,17 @@ export function usePopularMovies(selectedTag: string, tags: any[], contentType: 
             if (!response.ok) throw new Error('Failed to fetch');
 
             const data = await response.json();
-            const newMovies = data.subjects || [];
+            const newMovies: DoubanMovie[] = data.subjects || [];
 
             // Drop stale results if the user switched tags during the fetch
             if (requestIdRef.current !== requestId) return;
 
-            setMovies(prev => append ? [...prev, ...newMovies] : newMovies);
+            setMovies(prev => {
+                if (!append) return newMovies;
+                // Dedupe by id: douban pages may overlap across fetches
+                const seen = new Set(prev.map(m => m.id));
+                return [...prev, ...newMovies.filter(m => !seen.has(m.id))];
+            });
             setHasMore(newMovies.length === PAGE_LIMIT);
             // Update page after a successful fetch so a stale request can't corrupt pagination
             setPage(Math.floor(pageStart / PAGE_LIMIT));
@@ -109,7 +114,14 @@ export function usePopularMovies(selectedTag: string, tags: any[], contentType: 
             const cachedEntry = cache[cacheKey];
             if (cachedEntry && cachedEntry.movies.length > 0) {
                 isRestoringRef.current = true;
-                setMovies(cachedEntry.movies);
+                // Dedupe by id: cache entries saved before the append fix may contain duplicates
+                const seenIds = new Set<string>();
+                const dedupedMovies = cachedEntry.movies.filter(m => {
+                    if (seenIds.has(m.id)) return false;
+                    seenIds.add(m.id);
+                    return true;
+                });
+                setMovies(dedupedMovies);
                 setHasMore(cachedEntry.hasMore);
                 setPage(cachedEntry.page);
                 // Reset loading in case a previous tag's fetch is still in-flight
