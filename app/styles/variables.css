@@ -7,9 +7,10 @@
     --bg-image-light: none;
     --text-color-light: #1d1d1f;
     --text-color-secondary-light: #6e6e73;
-    --accent-color-light: #0056b3;
-    --glass-bg-light: rgba(255, 255, 255, 0.95);
-    --glass-border-light: rgba(0, 0, 0, 0.05);
+    --accent-color-light: #0066cc;
+    --glass-bg-light: rgba(255, 255, 255, 0.72);
+    --glass-border-light: rgba(0, 0, 0, 0.06);
+    --glass-hover-light: rgba(0, 0, 0, 0.06);
     --shadow-color-light: rgba(0, 0, 0, 0.05);
 
     /* Dark Mode Palette */
@@ -17,12 +18,14 @@
     --bg-image-dark: linear-gradient(120deg, #1a1a1a 0%, #121212 100%);
     --text-color-dark: #f5f5f7;
     --text-color-secondary-dark: #8e8e93;
-    --accent-color-dark: #1A6DBF;
-    --glass-bg-dark: rgba(30, 30, 30, 0.9);
-    --glass-border-dark: rgba(255, 255, 255, 0.1);
+    --accent-color-dark: #1a86f2;
+    --glass-bg-dark: rgba(22, 22, 24, 0.72);
+    --glass-border-dark: rgba(255, 255, 255, 0.12);
+    --glass-hover-dark: rgba(255, 255, 255, 0.08);
     --shadow-color-dark: rgba(0, 0, 0, 0.3);
 
     /* Universal Variables */
+    --radius-lg: 0.75rem;
     --radius-2xl: 1.5rem;
     --radius-full: 9999px;
     --shadow-sm: 0 1px 2px var(--shadow-color);
@@ -35,9 +38,16 @@
     --text-color: var(--text-color-light);
     --text-color-secondary: var(--text-color-secondary-light);
     --accent-color: var(--accent-color-light);
+    --accent-color-rgb: 0, 102, 204;
     --glass-bg: var(--glass-bg-light);
     --glass-border: var(--glass-border-light);
+    --glass-hover: var(--glass-hover-light);
     --shadow-color: var(--shadow-color-light);
+
+    /* 语义别名（部分组件引用但此前未定义） */
+    --text-secondary: var(--text-color-secondary);
+    --text-tertiary: color-mix(in srgb, var(--text-color-secondary) 75%, transparent);
+    --text-muted: var(--text-color-secondary);
 
     --background: #f2f4f7;
     --foreground: #1d1d1f;
@@ -69,8 +79,10 @@ body.dark,
     --text-color: var(--text-color-dark);
     --text-color-secondary: var(--text-color-secondary-dark);
     --accent-color: var(--accent-color-dark);
+    --accent-color-rgb: 26, 134, 242;
     --glass-bg: var(--glass-bg-dark);
     --glass-border: var(--glass-border-dark);
+    --glass-hover: var(--glass-hover-dark);
     --shadow-color: var(--shadow-color-dark);
 
     --background: #121212;

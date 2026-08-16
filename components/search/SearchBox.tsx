@@ -1,6 +1,5 @@
 import { useState, FormEvent, useEffect, useRef } from 'react';
 import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/Button';
 import { Icons } from '@/components/ui/Icon';
 import { SearchHistoryDropdown } from '@/components/search/SearchHistoryDropdown';
 import { useSearchHistory } from '@/lib/hooks/useSearchHistory';
@@ -77,7 +76,7 @@ export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = 
                 onBlur={handleInputBlur}
                 onKeyDown={handleKeyDown}
                 placeholder={placeholder}
-                className="text-base sm:text-lg pr-28 sm:pr-36 md:pr-44 truncate"
+                className="text-base sm:text-lg pr-24 sm:pr-28 truncate"
                 aria-label="搜索视频内容"
                 aria-expanded={isDropdownOpen}
                 aria-controls="search-history-dropdown"
@@ -90,23 +89,21 @@ export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = 
                     <button
                         type="button"
                         onClick={handleClear}
-                        className="p-2 text-[var(--text-color)] opacity-70 hover:opacity-100 transition-opacity touch-manipulation cursor-pointer"
+                        className="p-1.5 text-[var(--text-color)] opacity-70 hover:opacity-100 transition-opacity touch-manipulation cursor-pointer"
                         aria-label="清除搜索"
                     >
-                        <Icons.X size={20} />
+                        <Icons.X size={18} />
                     </button>
                 )}
-                <Button
+                <button
                     type="submit"
                     disabled={!query.trim()}
-                    variant="primary"
-                    className="px-3 sm:px-4 md:px-6"
+                    aria-label="搜索"
+                    title="搜索"
+                    className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[var(--accent-color)] text-white shadow-[0_2px_8px_color-mix(in_srgb,var(--shadow-color)_50%,transparent)] hover:brightness-110 active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation cursor-pointer flex-shrink-0"
                 >
-                    <span className="flex items-center gap-2">
-                        <Icons.Search size={20} />
-                        <span className="hidden sm:inline">搜索</span>
-                    </span>
-                </Button>
+                    <Icons.Search size={16} className="sm:w-[18px] sm:h-[18px]" />
+                </button>
             </div>
 
             {/* Search History Dropdown */}

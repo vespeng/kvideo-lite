@@ -191,7 +191,7 @@ export const VideoGrid = memo(function VideoGrid({
     <>
       <div
         ref={gridRef}
-        className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6 gap-3 md:gap-4 lg:gap-6 max-w-[1920px] mx-auto ${className}`}
+        className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6 gap-2.5 md:gap-3 lg:gap-4 max-w-[1920px] mx-auto ${className}`}
         role="list"
         aria-label="视频搜索结果"
       >

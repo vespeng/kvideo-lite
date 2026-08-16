@@ -271,7 +271,7 @@ export function DesktopMoreMenu({
     const MenuContent = (
         <div
             ref={menuRef}
-            className={`absolute z-[2147483647] bg-[var(--glass-bg)] backdrop-blur-[25px] saturate-[180%] rounded-[var(--radius-2xl)] border border-[var(--glass-border)] shadow-[var(--shadow-md)] p-1.5 sm:p-2 w-fit ${isRotated ? 'min-w-[170px]' : 'min-w-[200px] sm:min-w-[240px]'} animate-in fade-in zoom-in-95 duration-200 overflow-y-auto`}
+            className={`absolute z-[2147483647] bg-[var(--glass-bg)] backdrop-blur-[25px] rounded-[var(--radius-2xl)] border border-[var(--glass-border)] shadow-[var(--shadow-md)] p-1.5 sm:p-2 w-fit ${isRotated ? 'min-w-[170px]' : 'min-w-[200px] sm:min-w-[240px]'} animate-in fade-in zoom-in-95 duration-200 overflow-y-auto`}
             style={{
                 ...(isRotated ? {
                     // In Rotated Mode:
@@ -380,7 +380,7 @@ export function DesktopMoreMenu({
                 <button
                     onClick={() => setShowModeIndicator(!showModeIndicator)}
                     className={`relative rounded-full transition-all duration-300 cursor-pointer flex-shrink-0 border border-white/20 ${showModeIndicator
-                        ? 'bg-[var(--accent-color)] shadow-[0_0_15px_rgba(var(--accent-color-rgb),0.6)]'
+                        ? 'bg-[var(--accent-color)] shadow-[0_2px_8px_rgba(var(--accent-color-rgb),0.25)]'
                         : 'bg-white/5 hover:bg-white/10'
                         } ${isRotated ? 'w-6 h-3.5' : 'w-8 h-[18px] sm:w-10 sm:h-6'}`}
                     aria-checked={showModeIndicator}
@@ -412,7 +412,7 @@ export function DesktopMoreMenu({
                     {isAdFilterOpen && (
                         <>
                             <div className="fixed inset-0 z-10 cursor-default" onClick={() => setAdFilterOpen(false)} />
-                            <div className="absolute right-0 top-full mt-2 w-28 sm:w-32 bg-[var(--glass-bg)] backdrop-blur-[25px] saturate-[180%] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] shadow-[var(--shadow-md)] p-1 overflow-hidden z-20 flex flex-col animate-in fade-in zoom-in-95 duration-200">
+                            <div className="absolute right-0 top-full mt-2 w-28 sm:w-32 bg-[var(--glass-bg)] backdrop-blur-[25px] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] shadow-[var(--shadow-md)] p-1 overflow-hidden z-20 flex flex-col animate-in fade-in zoom-in-95 duration-200">
                                 {Object.entries(AD_FILTER_LABELS).map(([mode, label]) => (
                                     <button
                                         key={mode}
@@ -451,7 +451,7 @@ export function DesktopMoreMenu({
                     className={`relative rounded-full transition-all duration-300 flex-shrink-0 border border-white/20 ${!danmakuApiUrl
                         ? 'bg-white/5 opacity-40 cursor-not-allowed'
                         : danmakuEnabled
-                            ? 'bg-[var(--accent-color)] shadow-[0_0_15px_rgba(var(--accent-color-rgb),0.6)] cursor-pointer'
+                            ? 'bg-[var(--accent-color)] shadow-[0_2px_8px_rgba(var(--accent-color-rgb),0.25)] cursor-pointer'
                             : 'bg-white/5 hover:bg-white/10 cursor-pointer'
                         } ${isRotated ? 'w-6 h-3.5' : 'w-8 h-[18px] sm:w-10 sm:h-6'}`}
                     aria-checked={danmakuEnabled}
@@ -538,7 +538,7 @@ export function DesktopMoreMenu({
                 <button
                     onClick={() => setAutoNextEpisode(!autoNextEpisode)}
                     className={`relative rounded-full transition-all duration-300 cursor-pointer flex-shrink-0 border border-white/20 ${autoNextEpisode
-                        ? 'bg-[var(--accent-color)] shadow-[0_0_15px_rgba(var(--accent-color-rgb),0.6)]'
+                        ? 'bg-[var(--accent-color)] shadow-[0_2px_8px_rgba(var(--accent-color-rgb),0.25)]'
                         : 'bg-white/5 hover:bg-white/10'
                         } ${isRotated ? 'w-6 h-3.5' : 'w-8 h-[18px] sm:w-10 sm:h-6'}`}
                     aria-checked={autoNextEpisode}
@@ -561,7 +561,7 @@ export function DesktopMoreMenu({
                     <button
                         onClick={() => setAutoSkipIntro(!autoSkipIntro)}
                         className={`relative rounded-full transition-all duration-300 cursor-pointer flex-shrink-0 border border-white/20 ${autoSkipIntro
-                            ? 'bg-[var(--accent-color)] shadow-[0_0_15px_rgba(var(--accent-color-rgb),0.6)]'
+                            ? 'bg-[var(--accent-color)] shadow-[0_2px_8px_rgba(var(--accent-color-rgb),0.25)]'
                             : 'bg-white/5 hover:bg-white/10'
                             } ${isRotated ? 'w-6 h-3.5' : 'w-8 h-[18px] sm:w-10 sm:h-6'}`}
                         aria-checked={autoSkipIntro}
@@ -601,7 +601,7 @@ export function DesktopMoreMenu({
                     <button
                         onClick={() => setAutoSkipOutro(!autoSkipOutro)}
                         className={`relative rounded-full transition-all duration-300 cursor-pointer flex-shrink-0 border border-white/20 ${autoSkipOutro
-                            ? 'bg-[var(--accent-color)] shadow-[0_0_15px_rgba(var(--accent-color-rgb),0.6)]'
+                            ? 'bg-[var(--accent-color)] shadow-[0_2px_8px_rgba(var(--accent-color-rgb),0.25)]'
                             : 'bg-white/5 hover:bg-white/10'
                             } ${isRotated ? 'w-6 h-3.5' : 'w-8 h-[18px] sm:w-10 sm:h-6'}`}
                         aria-checked={autoSkipOutro}

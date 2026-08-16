@@ -220,7 +220,7 @@ export function DesktopSpeedMenu({
     const MenuContent = (
         <div
             ref={menuRef}
-            className={`absolute z-[2147483647] bg-[var(--glass-bg)] backdrop-blur-[25px] saturate-[180%] rounded-[var(--radius-2xl)] border border-[var(--glass-border)] shadow-[var(--shadow-md)] p-1 sm:p-1.5 w-fit ${isRotated ? 'min-w-[2.5rem]' : 'min-w-[3.5rem] sm:min-w-[4.5rem]'} animate-in fade-in zoom-in-95 duration-200 overflow-y-auto`}
+            className={`absolute z-[2147483647] bg-[var(--glass-bg)] backdrop-blur-[25px] rounded-[var(--radius-2xl)] border border-[var(--glass-border)] shadow-[var(--shadow-md)] p-1 sm:p-1.5 w-fit ${isRotated ? 'min-w-[2.5rem]' : 'min-w-[3.5rem] sm:min-w-[4.5rem]'} animate-in fade-in zoom-in-95 duration-200 overflow-y-auto`}
             style={{
                 ...(isRotated ? {
                     // In Rotated Mode:

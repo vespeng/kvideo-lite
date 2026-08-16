@@ -54,7 +54,7 @@ export function SegmentedControl<T extends string>({
         >
             {/* Sliding Indicator */}
             <div
-                className="absolute top-1 bottom-1 bg-[var(--accent-color)] rounded-[calc(var(--radius-2xl)-4px)] shadow-[0_2px_8px_rgba(0,122,255,0.3)] transition-all duration-300 cubic-bezier(0.2, 0.8, 0.2, 1)"
+                className="absolute top-1 bottom-1 bg-[var(--accent-color)] rounded-[calc(var(--radius-2xl)-4px)] shadow-[0_2px_8px_color-mix(in_srgb,var(--accent-color)_30%,transparent)] transition-all duration-300 cubic-bezier(0.2, 0.8, 0.2, 1)"
                 style={{
                     left: `${indicatorStyle.left}px`,
                     width: `${indicatorStyle.width}px`,

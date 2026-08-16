@@ -148,11 +148,6 @@ nav:where(.sticky, .fixed),
     transform: translateZ(0);
 }
 
-/* [class*="grid"]>* {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 400px;
-} */
-
 [class*="grid"]>a {
     animation: fadeInUp 0.2s ease-out;
 }
@@ -172,7 +167,6 @@ body.scrolling * {
 }
 
 .group:hover img,
-.glass-card,
 nav {
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -184,17 +178,11 @@ nav {
     contain: layout style;
 }
 
-.search-history-dropdown {
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-}
-
 /* TV Mode Styles */
 body.tv-mode [data-focusable]:focus {
     outline: 3px solid var(--accent-color);
     outline-offset: 4px;
-    box-shadow: 0 0 0 6px rgba(0, 122, 255, 0.2);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent-color) 20%, transparent);
     transform: scale(1.03);
     transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
 }

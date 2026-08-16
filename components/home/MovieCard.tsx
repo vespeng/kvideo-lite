@@ -46,7 +46,7 @@ export const MovieCard = memo(function MovieCard({ movie, onMovieClick }: MovieC
       onMouseEnter={(e) => (e.currentTarget.style.zIndex = '100')}
       onMouseLeave={(e) => (e.currentTarget.style.zIndex = '1')}
     >
-      <Card hover={false} className="p-0 h-full shadow-[0_2px_8px_var(--shadow-color)] hover:shadow-[0_8px_24px_var(--shadow-color)] transition-shadow duration-200 ease-out" blur={false}>
+      <Card hover={false} className="p-0 h-full">
         <div className="relative aspect-[2/3] bg-[var(--glass-bg)] rounded-[var(--radius-2xl)]">
           {!imageError ? (
             <Image
@@ -92,8 +92,8 @@ export const MovieCard = memo(function MovieCard({ movie, onMovieClick }: MovieC
             </div>
           )}
         </div>
-        <div className="pt-3">
-          <h3 className="font-semibold text-sm text-center text-[var(--text-color)] line-clamp-2 group-hover:text-[var(--accent-color)] transition-colors">
+        <div className="pt-1.5 px-1 pb-1">
+          <h3 className="font-semibold text-sm text-left text-[var(--text-color)] line-clamp-1 leading-snug group-hover:text-[var(--accent-color)] transition-colors">
             {movie.title}
           </h3>
         </div>

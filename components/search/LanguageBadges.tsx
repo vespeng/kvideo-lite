@@ -35,7 +35,7 @@ export const LanguageBadges = memo(function LanguageBadges({
   return (
     <Card
       hover={false}
-      className={`p-4 animate-fade-in bg-[var(--bg-color)]/50 backdrop-blur-none saturate-100 shadow-sm border-[var(--glass-border)] ${className}`}
+      className={`p-4 animate-fade-in ${className}`}
     >
       <div className="flex items-start gap-3">
         <div className="flex items-center gap-2 shrink-0 pt-1">

@@ -57,9 +57,8 @@ export const VideoCard = memo<VideoCardProps>(({
                 className="group cursor-pointer hover:translate-y-[-2px] transition-transform duration-200 ease-out block h-full"
             >
                 <Card
-                    className="p-0 flex flex-col h-full bg-[var(--bg-color)]/50 backdrop-blur-none saturate-100 shadow-sm border-[var(--glass-border)] hover:shadow-lg transition-shadow"
+                    className="p-0 flex flex-col h-full hover:shadow-[0_8px_24px_-8px_var(--shadow-color)] transition-shadow"
                     hover={false}
-                    blur={false}
                     style={{
                         backfaceVisibility: 'hidden',
                     }}
@@ -162,16 +161,16 @@ export const VideoCard = memo<VideoCardProps>(({
                     </div>
 
                     {/* Info */}
-                    <div className="px-2 pt-1.5 pb-1 flex flex-col">
+                    <div className="px-2 pt-0.5 pb-1 flex flex-col">
                         {(() => {
                             const { cleanTitle } = parseVideoTitle(video.vod_name);
 
                             return (
                                 <>
-                                    <h4 className="font-semibold text-sm text-[var(--text-color)] line-clamp-2 min-h-[2.5em] leading-snug">
+                                    <h4 className="font-semibold text-sm text-[var(--text-color)] line-clamp-2 min-h-[2em] leading-snug">
                                         {cleanTitle}
                                     </h4>
-                                    <div className="flex items-center gap-1.5 flex-wrap mt-1">
+                                    <div className="flex items-center gap-1.5 flex-wrap mt-0.5">
                                         {resolution ? (
                                             <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold text-white ${resolution.color}`}>
                                                 {resolution.label}

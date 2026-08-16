@@ -202,7 +202,7 @@
     border-top-color: var(--accent-color);
     border-radius: var(--radius-full);
     animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    box-shadow: 0 0 20px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent-color) 35%, transparent);
 }
 
 /* Next Episode Loading Indicator */
@@ -367,7 +367,7 @@
 }
 
 .player-menu-glass .menu-item.active {
-    background: rgba(0, 122, 255, 0.2);
+    background: color-mix(in srgb, var(--accent-color) 22%, transparent);
     color: var(--accent-color);
 }
 
@@ -409,7 +409,7 @@
 .btn-glass:focus-visible,
 .btn-icon:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.5);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 50%, transparent);
 }
 
 /* Progress Bar Enhanced */
@@ -427,7 +427,7 @@
 
 .progress-bar-glass .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent-color), #5ac8fa);
+    background: linear-gradient(90deg, var(--accent-color), color-mix(in srgb, var(--accent-color) 55%, white));
     border-radius: var(--radius-full);
     transition: width 0.1s linear;
 }

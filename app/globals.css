@@ -1,10 +1,8 @@
 @import "tailwindcss";
-@import "./scroll-optimization.css";
 @import "./styles/variables.css";
 @import "./styles/base.css";
 @import './styles/transitions.css';
 @import './styles/effects.css';
-@import './styles/glass.css';
 @import "./styles/video-player.css";
 @import "./styles/search-history.css";
 @keyframes jiggle {

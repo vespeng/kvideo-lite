@@ -116,15 +116,15 @@ export function ThemeSwitcher() {
       {isOpen && (
         <div className="
           absolute top-full right-0 mt-2
-          min-w-[140px]
+          min-w-[150px]
           bg-[var(--glass-bg)]
-          backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)]
+          backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)_saturate(180%)]
           border border-[var(--glass-border)]
-          rounded-[var(--radius-lg)]
+          rounded-[var(--radius-2xl)]
           shadow-lg
-          py-1.5
+          p-1.5
           z-50
-          animate-in fade-in slide-in-from-top-2 duration-200
+          animate-[scale-in_0.2s_ease-out]
         ">
           {themeOptions.map((option) => (
             <button
@@ -136,11 +136,12 @@ export function ThemeSwitcher() {
               className={`
                 w-full flex items-center gap-3 px-3 py-2
                 text-sm
+                rounded-[var(--radius-lg)]
                 transition-colors duration-150
                 cursor-pointer
                 ${theme === option.value
-                  ? 'bg-[var(--accent-color)]/10 text-[var(--accent-color)]'
-                  : 'text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--text-color)_5%,transparent)]'
+                  ? 'bg-[color-mix(in_srgb,var(--accent-color)_15%,transparent)] text-[var(--accent-color)]'
+                  : 'text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--text-color)_6%,transparent)]'
                 }
               `}
             >

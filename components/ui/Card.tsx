@@ -14,15 +14,15 @@ export function Card({ children, className = '', hover = true, blur = true, onCl
     ? "hover:translate-y-[-2px] hover:shadow-[0_8px_24px_var(--shadow-color)] cursor-pointer transition-transform duration-200 ease-out"
     : "";
 
-  // Conditionally apply blur classes - NOW DISABLED GLOBALLY via CSS override, but logic kept for structure
+  // Conditionally apply glass classes (Apple-style translucent surface)
   const blurClasses = blur
-    ? "bg-[var(--glass-bg)]" // Removed backdrop-blur classes here as they are expensive
+    ? "bg-[var(--glass-bg)] backdrop-blur-md [-webkit-backdrop-filter:blur(16px)_saturate(180%)]"
     : "bg-[var(--bg-color)]/90"; // More opaque fallback
 
   const baseClasses = `
     ${blurClasses}
     rounded-[var(--radius-2xl)]
-    shadow-[0_2px_8px_var(--shadow-color)] md:shadow-[var(--shadow-md)]
+    shadow-none
     border
     border-[var(--glass-border)]
     p-4 md:p-6

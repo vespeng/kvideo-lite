@@ -9,7 +9,7 @@ function ViewerNotice() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--bg-color)] bg-[image:var(--bg-image)] text-[var(--text-color)]">
       <div className="w-full max-w-md p-4">
-        <div className="bg-[var(--glass-bg)] backdrop-blur-[25px] saturate-[180%] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] p-8 shadow-[var(--shadow-md)] flex flex-col items-center gap-6">
+        <div className="bg-[var(--glass-bg)] backdrop-blur-[25px] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] p-8 shadow-[var(--shadow-md)] flex flex-col items-center gap-6">
           <div className="w-16 h-16 rounded-[var(--radius-full)] bg-amber-500/10 flex items-center justify-center text-amber-500 mb-2 shadow-[var(--shadow-sm)] border border-[var(--glass-border)]">
             <ShieldAlert size={32} />
           </div>

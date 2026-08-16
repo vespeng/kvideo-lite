@@ -831,7 +831,7 @@ export function IPTVPlayer({ channel, onClose, channels, onChannelChange, channe
                 {routes.length > 1 && currentRouteIndex < routes.length - 1 && (
                   <button
                     onClick={(e) => { e.stopPropagation(); setCurrentRouteIndex(prev => prev + 1); }}
-                    className="px-4 py-2 bg-blue-600/80 hover:bg-blue-600 rounded-lg text-white text-sm transition-colors cursor-pointer"
+                    className="px-4 py-2 bg-[var(--accent-color)]/80 hover:bg-[var(--accent-color)] rounded-lg text-white text-sm transition-colors cursor-pointer"
                   >
                     切换线路
                   </button>

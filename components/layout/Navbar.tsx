@@ -36,12 +36,12 @@ export function Navbar({ onReset, isPremiumMode = false, onOpenHistory }: Navbar
     };
 
     return (
-        <nav className="sticky top-0 z-[2000] pt-4 pb-2" style={{
+        <nav className="sticky top-0 z-[2000] pt-3 pb-1.5" style={{
             transform: 'translate3d(0, 0, 0)',
             willChange: 'transform'
         }}>
             <div className="max-w-7xl mx-auto px-4">
-                <div className="bg-[var(--glass-bg)] border border-[var(--glass-border)] shadow-[var(--shadow-sm)] px-3 sm:px-6 py-2 sm:py-4 rounded-[var(--radius-2xl)]" style={{
+                <div className="bg-[var(--glass-bg)] backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)_saturate(180%)] border border-[var(--glass-border)] shadow-[var(--shadow-sm)] px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-[var(--radius-2xl)]" style={{
                     transform: 'translate3d(0, 0, 0)'
                 }}>
                     <div className="flex items-center justify-between gap-2 sm:gap-4">

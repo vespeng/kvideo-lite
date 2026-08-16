@@ -11,9 +11,9 @@ export function PlayerNavbar({ isPremium }: { isPremium?: boolean }) {
     const siteIconSrc = useSiteIcon();
 
     return (
-        <nav className="sticky top-0 z-50 pt-4 pb-2" style={{ transform: 'translateZ(0)' }}>
+        <nav className="sticky top-0 z-50 pt-3 pb-1.5" style={{ transform: 'translateZ(0)' }}>
             <div className="max-w-7xl mx-auto px-4">
-                <div className="bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] shadow-[var(--shadow-sm)] px-3 sm:px-6 py-2 sm:py-4">
+                <div className="bg-[var(--glass-bg)] backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)_saturate(180%)] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] shadow-[var(--shadow-sm)] px-3 sm:px-5 py-1.5 sm:py-2.5">
                     <div className="flex items-center justify-between gap-2 sm:gap-4">
                         <button
                             onClick={() => router.push(isPremium ? '/premium' : '/')}

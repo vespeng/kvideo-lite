@@ -66,7 +66,7 @@ export function ConfirmDialog({
   const variantStyles = {
     danger: 'bg-red-500 hover:bg-red-600',
     warning: 'bg-[var(--accent-color)] hover:brightness-110',
-    info: 'bg-blue-500 hover:bg-blue-600',
+    info: 'bg-[var(--accent-color)] hover:brightness-110',
   };
   
   // Use dangerous prop to override variant
