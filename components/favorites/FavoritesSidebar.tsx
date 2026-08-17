@@ -101,7 +101,7 @@ export function FavoritesSidebar({ isPremium = false }: { isPremium?: boolean })
                     transform: isOpen ? 'translate3d(0, 0, 0)' : 'translate3d(-100%, 0, 0)',
                     willChange: isOpen ? 'transform' : 'auto'
                 }}
-                className={`fixed top-0 left-0 bottom-0 w-[85%] sm:w-[90%] max-w-[420px] z-[2000] bg-[var(--glass-bg)] backdrop-blur-[8px] border-r border-[var(--glass-border)] rounded-tr-[var(--radius-2xl)] rounded-br-[var(--radius-2xl)] p-6 flex flex-col shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-transform duration-250 ease-out`}
+                className={`fixed top-0 left-0 bottom-0 w-[85%] sm:w-[90%] max-w-[420px] z-[2000] bg-[var(--glass-bg)] backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)_saturate(180%)] border-r border-[var(--glass-border)] rounded-tr-[var(--radius-2xl)] rounded-br-[var(--radius-2xl)] p-6 flex flex-col shadow-[var(--shadow-sm)] transition-transform duration-250 ease-out`}
             >
                 <FavoritesHeader onClose={() => setIsOpen(false)} />
 

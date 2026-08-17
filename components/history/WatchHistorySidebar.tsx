@@ -102,7 +102,7 @@ export function WatchHistorySidebar({ isPremium = false, isOpen, onOpen, onClose
           transform: sidebarOpen ? 'translate3d(0, 0, 0)' : 'translate3d(100%, 0, 0)',
           willChange: sidebarOpen ? 'transform' : 'auto'
         }}
-        className={`fixed top-0 right-0 bottom-0 w-[85%] sm:w-[90%] max-w-[420px] z-[2000] bg-[var(--glass-bg)] backdrop-blur-[8px] border-l border-[var(--glass-border)] rounded-tl-[var(--radius-2xl)] rounded-bl-[var(--radius-2xl)] p-6 flex flex-col shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-transform duration-250 ease-out`}
+        className={`fixed top-0 right-0 bottom-0 w-[85%] sm:w-[90%] max-w-[420px] z-[2000] bg-[var(--glass-bg)] backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)_saturate(180%)] border-l border-[var(--glass-border)] rounded-tl-[var(--radius-2xl)] rounded-bl-[var(--radius-2xl)] p-6 flex flex-col shadow-[var(--shadow-sm)] transition-transform duration-250 ease-out`}
       >
         <HistoryHeader onClose={() => setSidebarOpen(false)} />
 

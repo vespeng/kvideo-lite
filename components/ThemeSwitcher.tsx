@@ -97,7 +97,7 @@ export function ThemeSwitcher() {
           w-9 h-9 sm:w-10 sm:h-10
           rounded-[var(--radius-full)]
           bg-[var(--glass-bg)]
-          backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)]
+          backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)_saturate(180%)]
           border border-[var(--glass-border)]
           text-[var(--text-color)]
           hover:bg-[color-mix(in_srgb,var(--accent-color)_10%,transparent)]
@@ -115,13 +115,13 @@ export function ThemeSwitcher() {
       {/* 下拉菜单 */}
       {isOpen && (
         <div className="
-          absolute top-full right-0 mt-2
+          absolute top-full right-0 mt-[18px]
           min-w-[150px]
-          bg-[var(--glass-bg)]
+          bg-[color-mix(in_srgb,var(--bg-color)_95%,transparent)]
           backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)_saturate(180%)]
           border border-[var(--glass-border)]
           rounded-[var(--radius-2xl)]
-          shadow-lg
+          shadow-[var(--shadow-sm)]
           p-1.5
           z-50
           animate-[scale-in_0.2s_ease-out]

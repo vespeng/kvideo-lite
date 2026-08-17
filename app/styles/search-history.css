@@ -4,9 +4,11 @@
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    background: var(--bg-color);
+    background: color-mix(in srgb, var(--bg-color) 95%, transparent);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
     border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     border: 1px solid var(--glass-border);
     padding: 0.75rem;
     opacity: 0;
