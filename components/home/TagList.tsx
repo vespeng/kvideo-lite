@@ -116,18 +116,21 @@ export function TagList({
     const showContentTags = !isRecommendActive;
 
     const chipButtonClass = (active: boolean) => `
-        px-6 py-2.5 text-sm font-semibold transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none flex items-center gap-1.5
+        px-4 py-1.5 text-xs font-medium transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none flex items-center gap-1.5
         ${active
             ? 'bg-[var(--accent-color)] text-white shadow-md scale-105'
             : 'bg-[var(--glass-bg)] backdrop-blur-xl text-[var(--text-color)] border border-[var(--glass-border)] hover:border-[var(--accent-color)] hover:scale-105'
         }
     `;
 
+    const labelClass = 'text-sm font-medium text-[var(--text-muted)] select-none';
+
     return (
         <>
             {/* Type Row: Movie / TV / Recommend — non-draggable, sits above content tags */}
             {hasTypeRow && (
                 <div className={`${showContentTags ? 'mb-4' : 'mb-8'} flex items-center gap-3 flex-wrap pt-2 px-1`}>
+                    <span className={labelClass}>分类</span>
                     {contentType && onContentTypeChange && (
                         <>
                             <button
@@ -142,7 +145,7 @@ export function TagList({
                                 onClick={() => onContentTypeChange('tv')}
                                 className={chipButtonClass(contentType === 'tv' && !isRecommendActive)}
                             >
-                                电视剧
+                                剧集
                             </button>
                         </>
                     )}
@@ -155,7 +158,6 @@ export function TagList({
                                 showTagManager ? 'opacity-40 cursor-not-allowed pointer-events-none' : ''
                             }`}
                         >
-                            <Icons.Sparkles size={14} />
                             {recommendTag.label}
                         </button>
                     )}
@@ -178,6 +180,7 @@ export function TagList({
                                 : 'overflow-x-auto'
                         }`}
                     >
+                        <span className={`${labelClass} flex-shrink-0`}>标签</span>
                         <SortableContext
                             items={tags.map((t) => t.id)}
                             strategy={showTagManager ? rectSortingStrategy : horizontalListSortingStrategy}

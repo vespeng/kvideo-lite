@@ -76,7 +76,7 @@ export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = 
                 onBlur={handleInputBlur}
                 onKeyDown={handleKeyDown}
                 placeholder={placeholder}
-                className="text-base sm:text-lg pr-24 sm:pr-28 truncate"
+                className="text-base sm:text-lg pr-28 sm:pr-32 truncate"
                 aria-label="搜索视频内容"
                 aria-expanded={isDropdownOpen}
                 aria-controls="search-history-dropdown"
@@ -100,9 +100,10 @@ export function SearchBox({ onSearch, onClear, initialQuery = '', placeholder = 
                     disabled={!query.trim()}
                     aria-label="搜索"
                     title="搜索"
-                    className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[var(--accent-color)] text-white shadow-[0_2px_8px_color-mix(in_srgb,var(--shadow-color)_50%,transparent)] hover:brightness-110 active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation cursor-pointer flex-shrink-0"
+                    className="h-9 sm:h-10 pl-3 pr-4 flex items-center justify-center gap-1.5 rounded-full bg-[var(--accent-color)] text-white shadow-[0_2px_8px_color-mix(in_srgb,var(--shadow-color)_50%,transparent)] hover:brightness-110 active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation cursor-pointer flex-shrink-0"
                 >
                     <Icons.Search size={16} className="sm:w-[18px] sm:h-[18px]" />
+                    <span className="text-sm sm:text-base font-medium leading-none">搜索</span>
                 </button>
             </div>
 
