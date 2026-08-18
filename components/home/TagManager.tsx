@@ -55,7 +55,7 @@ export function TagManager({
       <div className="mb-6 flex items-center justify-between">
         <button
           onClick={onToggleManager}
-          className="text-xs text-[var(--text-color-secondary)] hover:text-[var(--accent-color)] transition-colors flex items-center gap-2 cursor-pointer"
+          className="text-sm text-[var(--text-color-secondary)] hover:text-[var(--accent-color)] transition-colors flex items-center gap-2 cursor-pointer"
         >
           <Icons.Tag size={16} />
           {showTagManager ? '完成' : '管理标签'}
@@ -63,7 +63,7 @@ export function TagManager({
         {showTagManager && (
           <button
             onClick={onRestoreDefaults}
-            className="text-xs text-[var(--text-color-secondary)] hover:text-[var(--accent-color)] transition-colors flex items-center gap-2 cursor-pointer"
+            className="text-sm text-[var(--text-color-secondary)] hover:text-[var(--accent-color)] transition-colors flex items-center gap-2 cursor-pointer"
           >
             <Icons.RefreshCw size={16} />
             恢复默认

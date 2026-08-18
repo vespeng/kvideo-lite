@@ -88,7 +88,7 @@ export function ThemeSwitcher() {
   ];
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative hidden sm:block" ref={dropdownRef}>
       {/* 主按钮 */}
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -115,7 +115,7 @@ export function ThemeSwitcher() {
       {/* 下拉菜单 */}
       {isOpen && (
         <div className="
-          absolute top-full right-0 mt-[18px]
+          absolute top-full right-0 mt-2
           min-w-[150px]
           bg-[color-mix(in_srgb,var(--bg-color)_95%,transparent)]
           backdrop-blur-xl [-webkit-backdrop-filter:blur(25px)_saturate(180%)]
