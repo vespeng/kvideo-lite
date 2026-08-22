@@ -25,12 +25,12 @@ function PremiumHomePage() {
     } = usePremiumHomePage();
 
     return (
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen">
             {/* Glass Navbar */}
             <Navbar onReset={handleReset} isPremiumMode={true} />
 
             {/* Search Form - Separate from navbar */}
-            <div className="max-w-7xl mx-auto px-4 mt-6 mb-8 relative" style={{
+            <div className="max-w-[1240px] mx-auto px-4 mt-6 mb-8 relative" style={{
                 transform: 'translate3d(0, 0, 0)',
                 zIndex: 1000
             }}>
@@ -49,7 +49,7 @@ function PremiumHomePage() {
             </div>
 
             {/* Main Content */}
-            <main className="max-w-7xl mx-auto px-4 pb-20">
+            <main className="max-w-[1240px] mx-auto px-4 pb-20">
                 {/* Results Section */}
                 {(results.length >= 1 || (!loading && results.length > 0)) && (
                     <SearchResults
@@ -92,7 +92,7 @@ function PremiumHomePage() {
 export default function PremiumPage() {
     return (
         <Suspense fallback={
-            <div className="min-h-screen flex items-center justify-center bg-black">
+            <div className="min-h-screen flex items-center justify-center">
                 <div className="animate-spin rounded-full h-16 w-16 border-4 border-[var(--accent-color)] border-t-transparent"></div>
             </div>
         }>

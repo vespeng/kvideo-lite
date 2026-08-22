@@ -32,13 +32,7 @@ export function FavoritesPageContent({
   }, [favorites, sortBy]);
 
   return (
-    <div
-      className={
-        isPremium
-          ? 'min-h-screen bg-black'
-          : 'min-h-screen bg-[var(--bg-color)] bg-[image:var(--bg-image)] bg-fixed'
-      }
-    >
+    <div className="min-h-screen bg-[var(--bg-color)] bg-[image:var(--bg-image)] bg-fixed">
       <Navbar
         onReset={() => router.push(isPremium ? '/premium' : '/')}
         isPremiumMode={isPremium}
@@ -81,19 +75,9 @@ export function FavoritesPageContent({
   );
 }
 
-interface FavoritesPageFallbackProps {
-  isPremium?: boolean;
-}
-
-export function FavoritesPageFallback({
-  isPremium = false,
-}: FavoritesPageFallbackProps) {
+export function FavoritesPageFallback() {
   return (
-    <div
-      className={`min-h-screen flex items-center justify-center${
-        isPremium ? ' bg-black' : ''
-      }`}
-    >
+    <div className="min-h-screen flex items-center justify-center">
       <div className="animate-spin rounded-full h-16 w-16 border-4 border-[var(--accent-color)] border-t-transparent" />
     </div>
   );

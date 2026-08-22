@@ -53,7 +53,7 @@ export default function PremiumSettingsPage() {
 
     return (
         <AdminGate>
-        <div className="min-h-screen bg-black">
+        <div className="min-h-screen bg-[var(--bg-color)] bg-[image:var(--bg-image)] bg-fixed">
             <div className="container mx-auto px-4 py-8 max-w-4xl space-y-8">
                 {/* Custom Header for Premium Settings */}
                 <div className="bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-[var(--radius-2xl)] shadow-[var(--shadow-sm)] p-6">

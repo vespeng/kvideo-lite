@@ -8,7 +8,7 @@ import {
 
 export default function PremiumFavorites() {
   return (
-    <Suspense fallback={<FavoritesPageFallback isPremium />}>
+    <Suspense fallback={<FavoritesPageFallback />}>
       <FavoritesPageContent isPremium />
     </Suspense>
   );

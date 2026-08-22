@@ -30,7 +30,7 @@ export function PremiumContentGrid({
 
     return (
         <>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6 gap-3 md:gap-4 lg:gap-6 max-w-[1920px] mx-auto">
                 {videos.map((video) => (
                     <Link
                         key={`${video.source}-${video.vod_id}`}
@@ -51,7 +51,7 @@ export function PremiumContentGrid({
                         onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.zIndex = '100')}
                         onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.zIndex = '1')}
                     >
-                        <Card hover={false} className="p-0 h-full shadow-[0_2px_8px_var(--shadow-color)] hover:shadow-[0_8px_24px_var(--shadow-color)] transition-shadow duration-200 ease-out" blur={false}>
+                        <Card hover={false} className="p-0 h-full">
                             <div className="relative aspect-[2/3] bg-[var(--glass-bg)] rounded-[var(--radius-2xl)]">
                                 {video.vod_pic ? (
                                     <Image
