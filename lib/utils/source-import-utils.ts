@@ -155,8 +155,8 @@ export function mergeSources(
 
     for (const source of newSources) {
         if (existingIds.has(source.id)) {
-            // 更新已存在的源，但保留本地 enabled 状态，
-            // 避免订阅同步时把管理员手动关闭的源重新打开
+            // Update the existing source but preserve its local enabled state,
+            // to avoid re-enabling sources manually disabled by the admin during subscription sync
             const idx = merged.findIndex(s => s.id === source.id);
             if (idx !== -1) {
                 merged[idx] = { ...merged[idx], ...source, enabled: merged[idx].enabled };

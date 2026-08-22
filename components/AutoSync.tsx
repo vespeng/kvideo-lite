@@ -7,7 +7,7 @@ import { useCloudSync } from '@/lib/hooks/useCloudSync';
 import { useConfigSync } from '@/lib/hooks/useConfigSync';
 import { getSession } from '@/lib/store/auth-store';
 
-// 防抖函数，防止频繁请求
+// Debounce function to prevent frequent requests
 function debounce<Args extends unknown[]>(fn: (...args: Args) => void, delay: number) {
   let timeoutId: ReturnType<typeof setTimeout> | undefined;
   return (...args: Args) => {
@@ -24,15 +24,15 @@ export function AutoSync() {
 
   useEffect(() => {
     const session = getSession();
-    if (!session) return; // 未登录不进行同步
+    if (!session) return; // Skip sync when not logged in
 
-    // 1. 刚打开网页时，主动从云端拉取一次最新数据
+    // 1. Pull the latest data from the cloud once on page load
     pullFromCloud();
 
-    // 2. 监听本地数据的变化，如果数据变了，延迟 5 秒后推送到云端
+    // 2. Watch local data changes and push to the cloud after a 5-second delay
     const debouncedPush = debounce(pushToCloud, 5000);
 
-    // 修改点在这里：Zustand v4/v5 默认 subscribe 只接受一个参数
+    // Change point here: Zustand v4/v5 subscribe only accepts a single argument by default
     const unsubHistory = useHistoryStore.subscribe(() => {
       debouncedPush();
     });
@@ -47,5 +47,5 @@ export function AutoSync() {
     };
   }, [pushToCloud, pullFromCloud]);
 
-  return null; // 这是一个静默组件，不需要渲染任何UI
+  return null; // Silent component, no UI to render
 }

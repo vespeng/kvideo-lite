@@ -14,9 +14,9 @@ export interface SwipeGestureState {
 }
 
 interface UseSwipeGestureOptions {
-  /** 触发滑动的最小垂直位移（像素），默认 30 */
+  /** Minimum vertical displacement (px) to trigger a swipe, default 30 */
   threshold?: number;
-  /** 滑动灵敏度（像素到值的转换比例），默认 0.005 */
+  /** Swipe sensitivity (ratio of pixels to value), default 0.005 */
   sensitivity?: number;
 }
 

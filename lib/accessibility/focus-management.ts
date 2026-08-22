@@ -1,11 +1,10 @@
 /**
  * Focus Management Utilities
- * 焦点管理工具库 - For accessible focus trapping and restoration
+ * For accessible focus trapping and restoration
  */
 
 /**
  * Get all focusable elements within a container
- * 获取容器内所有可聚焦的元素
  */
 function getFocusableElements(container: HTMLElement): HTMLElement[] {
   const selector = [
@@ -33,7 +32,6 @@ function getFocusableElements(container: HTMLElement): HTMLElement[] {
 
 /**
  * Trap focus within a container (for modals, dialogs, etc.)
- * 在容器内陷阱焦点（用于模态框、对话框等）
  * 
  * @param container The container element to trap focus within
  * @returns Cleanup function to remove the focus trap

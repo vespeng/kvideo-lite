@@ -1,4 +1,4 @@
-/* 仅保留实际被组件引用的动画关键帧 */
+/* Keep only the keyframes actually referenced by components */
 
 @keyframes spin-slow {
     from {

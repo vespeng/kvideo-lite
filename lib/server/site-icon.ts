@@ -85,7 +85,7 @@ export async function resolveSiteIconSrc(): Promise<string> {
   }
 
   const runtimeIconUrl = normalizeIconUrl(
-    process.env.SITE_ICON_URL?.trim() || process.env.NEXT_PUBLIC_SITE_ICON_URL?.trim(),
+    process.env.SITE_ICON_URL?.trim(),
   );
   if (runtimeIconUrl) {
     return runtimeIconUrl;

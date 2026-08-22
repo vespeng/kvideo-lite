@@ -22,14 +22,14 @@ select,
 
 html {
     scroll-behavior: auto;
-    /* 让 html 成为滚动容器并始终预留滚动条槽位，
-       避免切换页面时因滚动条出现/消失导致内容宽度抖动 */
+    /* Make html the scroll container and always reserve a scrollbar gutter,
+       to prevent content width jitter when the scrollbar appears/disappears between pages */
     overflow-y: scroll;
     scrollbar-gutter: stable;
 }
 
 body {
-    /* 与 html 一致，确保滚动条槽位在所有情况下稳定 */
+    /* Consistent with html, keep the scrollbar gutter stable in all cases */
     scrollbar-gutter: stable;
     min-height: 100vh;
 }
@@ -55,8 +55,8 @@ select:focus-visible {
 }
 
 /* Scrollbar Styles */
-/* 柔和的中性灰滚动条：基于文字次要色，浅色/深色下都柔和且可见 */
-/* Firefox 滚动条 */
+/* Soft neutral-gray scrollbar: based on the secondary text color, subtle and visible in light/dark mode */
+/* Firefox scrollbar */
 * {
     scrollbar-width: thin;
     scrollbar-color: color-mix(in srgb, var(--text-color-secondary) 35%, transparent) transparent;
@@ -89,7 +89,7 @@ select:focus-visible {
     background-clip: padding-box;
 }
 
-/* 搜索历史下拉等内部细滚动条 */
+/* Thin inner scrollbar for search history dropdown, etc. */
 .search-history-dropdown {
     scrollbar-width: thin;
     scrollbar-color: color-mix(in srgb, var(--text-color-secondary) 35%, transparent) transparent;

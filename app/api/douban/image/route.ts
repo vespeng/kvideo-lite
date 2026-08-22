@@ -36,16 +36,16 @@ export async function GET(request: Request) {
             );
         }
 
-        // 创建响应头
+        // Create response headers
         const headers = new Headers();
         if (contentType) {
             headers.set('Content-Type', contentType);
         }
 
-        // 设置缓存头
+        // Set cache headers
         headers.set('Cache-Control', 'public, max-age=15720000, s-maxage=15720000');
 
-        // 直接返回图片流
+        // Return the image stream directly
         // @ts-ignore
         return new Response(imageResponse.body, {
             status: 200,

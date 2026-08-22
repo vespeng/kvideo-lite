@@ -46,7 +46,7 @@ docker run -d -p 3000:3000 \
   -e ADMIN_PASSWORD="admin123" \
   -e PREMIUM_PASSWORD="premium456" \
   -e ACCOUNTS="user1:用户一:admin,user2:用户二:viewer" \
-  -e NEXT_PUBLIC_SITE_NAME="我的视频" \
+  -e SITE_NAME="我的视频" \
   --name video vespeng/video:latest
 ```
 
@@ -84,8 +84,9 @@ npm start
 
 | 变量名 | 说明 | 默认值 |
 |--------|------|--------|
-| `NEXT_PUBLIC_SITE_NAME` | 站点名称 | `KVideo Lite` |
-| `NEXT_PUBLIC_SITE_TITLE` | 浏览器标题 | `KVideo Lite - 视频聚合平台` |
+| `SITE_NAME` | 站点名称 | `KVideo Lite` |
+| `SITE_TITLE` | 浏览器标题 | `KVideo Lite - 视频聚合平台` |
+| `SITE_DESCRIPTION` | 站点描述 | `视频聚合平台` |
 | `SITE_ICON_FILE` | Docker 图标文件路径 | - |
 | `SITE_ICON_URL` | Docker 图标 URL | - |
 

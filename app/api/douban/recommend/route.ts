@@ -26,7 +26,7 @@ export async function GET(request: Request) {
 
     const data = await response.json();
 
-    // 转换图片链接使用代理
+    // Rewrite image links to use the proxy
     if (data.subjects && Array.isArray(data.subjects)) {
       data.subjects = data.subjects.map((item: any) => ({
         ...item,

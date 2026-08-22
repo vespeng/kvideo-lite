@@ -79,7 +79,7 @@ export const MovieCard = memo(function MovieCard({ movie, onMovieClick }: MovieC
             <div
               onClick={(e) => {
                 e.preventDefault();
-                e.stopPropagation(); // 阻止事件冒泡，防止触发外层卡片的搜索点击
+                e.stopPropagation(); // Prevent event bubbling from triggering the outer card's search click
                 window.open(movie.url, '_blank', 'noopener,noreferrer');
               }}
               title="在豆瓣中查看"

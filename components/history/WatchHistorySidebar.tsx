@@ -1,6 +1,6 @@
 /**
  * Watch History Sidebar Component
- * 观看历史侧边栏组件 - Main layout and state management
+ * Main layout and state management
  */
 
 'use client';

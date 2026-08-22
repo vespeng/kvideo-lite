@@ -80,10 +80,10 @@ const ACCOUNTS = process.env.ACCOUNTS || '';
 const AUTH_SECRET = process.env.AUTH_SECRET || '';
 const PREMIUM_PASSWORD = process.env.PREMIUM_PASSWORD || '';
 const PERSIST_SESSION = process.env.PERSIST_SESSION !== 'false';
-const SUBSCRIPTION_SOURCES = process.env.SUBSCRIPTION_SOURCES || process.env.NEXT_PUBLIC_SUBSCRIPTION_SOURCES || '';
-const IPTV_SOURCES = process.env.IPTV_SOURCES || process.env.NEXT_PUBLIC_IPTV_SOURCES || '';
-const MERGE_SOURCES = process.env.MERGE_SOURCES || process.env.NEXT_PUBLIC_MERGE_SOURCES || '';
-const DANMAKU_API_URL = process.env.DANMAKU_API_URL || process.env.NEXT_PUBLIC_DANMAKU_API_URL || '';
+const SUBSCRIPTION_SOURCES = process.env.SUBSCRIPTION_SOURCES || '';
+const IPTV_SOURCES = process.env.IPTV_SOURCES || '';
+const MERGE_SOURCES = process.env.MERGE_SOURCES || '';
+const DANMAKU_API_URL = process.env.DANMAKU_API_URL || '';
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 30;
 const MANAGED_AUTH_FORCED = process.env.MANAGED_AUTH_ENABLED === 'true';
 

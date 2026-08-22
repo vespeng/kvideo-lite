@@ -44,7 +44,7 @@
     --glass-hover: var(--glass-hover-light);
     --shadow-color: var(--shadow-color-light);
 
-    /* 语义别名（部分组件引用但此前未定义） */
+    /* Semantic aliases (referenced by some components but not previously defined) */
     --text-secondary: var(--text-color-secondary);
     --text-tertiary: color-mix(in srgb, var(--text-color-secondary) 75%, transparent);
     --text-muted: var(--text-color-secondary);

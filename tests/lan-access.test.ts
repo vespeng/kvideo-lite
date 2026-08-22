@@ -18,10 +18,10 @@ test('parseBooleanEnv only enables explicit truthy values', () => {
   assert.equal(parseBooleanEnv(undefined), false);
 });
 
-test('isLanAccessEnabled supports server and public env names', () => {
+test('isLanAccessEnabled only supports the unified ALLOW_LAN_ACCESS env name', () => {
   assert.equal(isLanAccessEnabled({}), false);
   assert.equal(isLanAccessEnabled({ ALLOW_LAN_ACCESS: 'true' }), true);
-  assert.equal(isLanAccessEnabled({ NEXT_PUBLIC_ALLOW_LAN_ACCESS: 'yes' }), true);
+  assert.equal(isLanAccessEnabled({ NEXT_PUBLIC_ALLOW_LAN_ACCESS: 'yes' }), false);
 });
 
 test('parseLanAllowedDevOrigins accepts hostnames, URLs, ports, and comma lists', () => {

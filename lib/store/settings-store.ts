@@ -82,7 +82,7 @@ export const getDefaultPremiumSources = (): VideoSource[] => PREMIUM_SOURCES;
 
 
 function getEnvSubscriptions(customValue?: string): SourceSubscription[] {
-  const envValue = (customValue || process.env.SUBSCRIPTION_SOURCES || process.env.NEXT_PUBLIC_SUBSCRIPTION_SOURCES || '').trim();
+  const envValue = (customValue || process.env.SUBSCRIPTION_SOURCES || '').trim();
   if (!envValue) return [];
 
   // 1. Try JSON
@@ -146,7 +146,7 @@ function getDefaultAppSettings(): AppSettings {
     personalizedRecommendations: true,
     videoTogetherEnabled: false,
     danmakuEnabled: false,
-    danmakuApiUrl: process.env.NEXT_PUBLIC_DANMAKU_API_URL || '',
+    danmakuApiUrl: process.env.DANMAKU_API_URL || '',
     danmakuOpacity: 0.7,
     danmakuFontSize: 20,
     danmakuDisplayArea: 0.5,
@@ -250,7 +250,7 @@ export const settingsStore = {
         personalizedRecommendations: parsed.personalizedRecommendations !== undefined ? parsed.personalizedRecommendations : true,
         videoTogetherEnabled: parsed.videoTogetherEnabled !== undefined ? parsed.videoTogetherEnabled : false,
         danmakuEnabled: parsed.danmakuEnabled !== undefined ? parsed.danmakuEnabled : false,
-        danmakuApiUrl: typeof parsed.danmakuApiUrl === 'string' ? (parsed.danmakuApiUrl || process.env.NEXT_PUBLIC_DANMAKU_API_URL || '') : (process.env.NEXT_PUBLIC_DANMAKU_API_URL || ''),
+        danmakuApiUrl: typeof parsed.danmakuApiUrl === 'string' ? (parsed.danmakuApiUrl || process.env.DANMAKU_API_URL || '') : (process.env.DANMAKU_API_URL || ''),
         danmakuOpacity: typeof parsed.danmakuOpacity === 'number' ? parsed.danmakuOpacity : 0.7,
         danmakuFontSize: typeof parsed.danmakuFontSize === 'number' ? parsed.danmakuFontSize : 20,
         danmakuDisplayArea: typeof parsed.danmakuDisplayArea === 'number' ? parsed.danmakuDisplayArea : 0.5,

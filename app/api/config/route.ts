@@ -8,7 +8,7 @@ import { NextResponse } from 'next/server';
 
 export const runtime = 'edge';
 
-const SUBSCRIPTION_SOURCES = process.env.SUBSCRIPTION_SOURCES || process.env.NEXT_PUBLIC_SUBSCRIPTION_SOURCES || '';
+const SUBSCRIPTION_SOURCES = process.env.SUBSCRIPTION_SOURCES || '';
 
 export async function GET() {
     return NextResponse.json({

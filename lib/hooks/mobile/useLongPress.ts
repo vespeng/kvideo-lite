@@ -6,7 +6,7 @@ interface LongPressHandler {
 }
 
 interface UseLongPressOptions {
-  /** 长按触发延迟时间（毫秒），默认 300ms */
+  /** Long-press trigger delay in milliseconds, default 300ms */
   delay?: number;
 }
 

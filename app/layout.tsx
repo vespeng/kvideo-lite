@@ -2,8 +2,9 @@ import React from 'react';
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { AutoSync } from '@/components/AutoSync'; // <-- 引入了自动同步组件
+import { AutoSync } from '@/components/AutoSync'; // <-- importing the auto-sync component
 import { SiteIconProvider } from '@/components/SiteIconProvider';
+import { SiteInfoProvider } from '@/components/SiteInfoProvider';
 import { TVProvider } from "@/lib/contexts/TVContext";
 import { TVNavigationInitializer } from "@/components/TVNavigationInitializer";
 import { Analytics } from "@vercel/analytics/react";
@@ -52,7 +53,7 @@ function AdKeywordsWrapper() {
 
     // 2. Fallback to Env var (Runtime or Build time)
     if (keywords.length === 0) {
-      const envKeywords = process.env.AD_KEYWORDS || process.env.NEXT_PUBLIC_AD_KEYWORDS;
+      const envKeywords = process.env.AD_KEYWORDS;
       if (envKeywords) {
         keywords = envKeywords.split(/[\n,]/).map((k: string) => k.trim()).filter((k: string) => k);
       }
@@ -109,6 +110,7 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <SiteIconProvider iconSrc={siteIconSrc}>
+          <SiteInfoProvider name={siteConfig.name} description={siteConfig.description}>
           <ThemeProvider>
             <RuntimeFeaturesProvider initialFeatures={runtimeFeatures}>
               <VideoTogetherController
@@ -141,6 +143,7 @@ export default async function RootLayout({
               <ServiceWorkerRegister />
             </RuntimeFeaturesProvider>
           </ThemeProvider>
+          </SiteInfoProvider>
         </SiteIconProvider>
 
         {/* ARIA Live Region for Screen Reader Announcements */}

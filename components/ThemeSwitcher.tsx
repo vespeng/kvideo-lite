@@ -8,7 +8,7 @@ export function ThemeSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // 点击外部关闭下拉菜单
+  // Close the dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -25,7 +25,7 @@ export function ThemeSwitcher() {
     };
   }, [isOpen]);
 
-  // 获取当前主题对应的图标
+  // Get the icon for the current theme
   const getCurrentIcon = () => {
     switch (theme) {
       case 'light':
@@ -89,7 +89,7 @@ export function ThemeSwitcher() {
 
   return (
     <div className="relative hidden sm:block" ref={dropdownRef}>
-      {/* 主按钮 */}
+      {/* Main Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`
@@ -112,7 +112,7 @@ export function ThemeSwitcher() {
         {getCurrentIcon()}
       </button>
 
-      {/* 下拉菜单 */}
+      {/* Dropdown Menu */}
       {isOpen && (
         <div className="
           absolute top-full right-0 mt-2

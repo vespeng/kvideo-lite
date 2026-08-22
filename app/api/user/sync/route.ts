@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { authenticationRequiredResponse } from '@/lib/server/api-responses';
 import { getServerSession } from '@/lib/server/auth';
 
-// 确保这行代码在整个文件中只出现一次
+// Ensure this line appears only once in the entire file
 export const runtime = 'edge';
 
 const redis = Redis.fromEnv();

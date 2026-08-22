@@ -21,10 +21,8 @@ function isTruthyEnv(value) {
   );
 }
 
-const lanAccessEnabled = isTruthyEnv(
-  process.env.ALLOW_LAN_ACCESS ?? process.env.NEXT_PUBLIC_ALLOW_LAN_ACCESS
-);
-const hostname = process.env.HOSTNAME || process.env.NEXT_HOSTNAME || (lanAccessEnabled ? '0.0.0.0' : 'localhost');
+const lanAccessEnabled = isTruthyEnv(process.env.ALLOW_LAN_ACCESS);
+const hostname = process.env.HOSTNAME || (lanAccessEnabled ? '0.0.0.0' : 'localhost');
 const args = [mode, '--port', process.env.PORT || '3000'];
 
 if (hostname) {

@@ -2,11 +2,8 @@ type EnvLike = Record<string, string | undefined>;
 
 const TRUE_ENV_VALUES = new Set(['1', 'true', 'yes', 'y', 'on', 'enabled', 'enable']);
 
-export const LAN_ACCESS_ENV_KEYS = ['ALLOW_LAN_ACCESS', 'NEXT_PUBLIC_ALLOW_LAN_ACCESS'] as const;
-export const LAN_ALLOWED_DEV_ORIGINS_ENV_KEYS = [
-  'LAN_ALLOWED_DEV_ORIGINS',
-  'NEXT_PUBLIC_LAN_ALLOWED_DEV_ORIGINS',
-] as const;
+export const LAN_ACCESS_ENV_KEYS = ['ALLOW_LAN_ACCESS'] as const;
+export const LAN_ALLOWED_DEV_ORIGINS_ENV_KEYS = ['LAN_ALLOWED_DEV_ORIGINS'] as const;
 
 export const DEFAULT_LAN_ALLOWED_DEV_ORIGINS = [
   '10.*.*.*',
