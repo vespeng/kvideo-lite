@@ -54,7 +54,7 @@ export function SortableTag({
                     type="button"
                     onClick={() => onTagSelect(tag.id)}
                     className={`
-            px-4 py-1.5 text-xs font-medium transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none
+            px-4 py-1.5 text-sm font-medium transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none
             ${selectedTag === tag.id
                             ? 'bg-[var(--accent-color)] text-white shadow-md scale-105'
                             : 'bg-[var(--glass-bg)] backdrop-blur-xl text-[var(--text-color)] border border-[var(--glass-border)] hover:border-[var(--accent-color)] hover:scale-105'

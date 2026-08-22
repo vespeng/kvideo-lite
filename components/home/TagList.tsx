@@ -116,7 +116,7 @@ export function TagList({
     const showContentTags = !isRecommendActive;
 
     const chipButtonClass = (active: boolean) => `
-        px-4 py-1.5 text-xs font-medium transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none flex items-center gap-1.5
+        px-4 py-1.5 text-sm font-medium transition-all whitespace-nowrap rounded-[var(--radius-full)] cursor-pointer select-none flex items-center gap-1.5
         ${active
             ? 'bg-[var(--accent-color)] text-white shadow-md scale-105'
             : 'bg-[var(--glass-bg)] backdrop-blur-xl text-[var(--text-color)] border border-[var(--glass-border)] hover:border-[var(--accent-color)] hover:scale-105'
@@ -201,7 +201,7 @@ export function TagList({
                     <DragOverlay>
                         {activeId && activeTag ? (
                             <div className="relative flex-shrink-0 animate-jiggle">
-                                <button className="px-4 py-1.5 text-xs font-medium whitespace-nowrap rounded-[var(--radius-full)] bg-[var(--accent-color)] text-white shadow-xl scale-110 cursor-grabbing border border-transparent">
+                                <button className="px-4 py-1.5 text-sm font-medium whitespace-nowrap rounded-[var(--radius-full)] bg-[var(--accent-color)] text-white shadow-xl scale-110 cursor-grabbing border border-transparent">
                                     {activeTag.label}
                                 </button>
                             </div>

@@ -31,12 +31,12 @@ export function FavoritesPageHeader({
       </button>
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 flex items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--glass-bg)] border border-[var(--glass-border)]">
-            <Icons.Heart size={24} className="text-[var(--text-color)]" />
+          <div className="w-10 h-10 flex items-center justify-center rounded-[var(--radius-2xl)] bg-[var(--glass-bg)] border border-[var(--glass-border)]">
+            <Icons.Heart size={20} className="text-[var(--text-color)]" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-[var(--text-color)]">我的收藏</h1>
-            <p className="text-[var(--text-color-secondary)]">
+            <h1 className="text-2xl font-bold text-[var(--text-color)]">我的收藏</h1>
+            <p className="text-sm text-[var(--text-color-secondary)]">
               共 {count} 个视频
             </p>
           </div>
@@ -71,7 +71,7 @@ export function FavoritesPageHeader({
           {count > 0 && (
             <button
               onClick={onClearAll}
-              className="px-4 py-2 rounded-[var(--radius-full)] bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_10%,transparent)] transition-all text-sm flex items-center gap-2"
+              className="px-3 py-1.5 rounded-[var(--radius-full)] bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-color)] hover:bg-[color-mix(in_srgb,var(--accent-color)_10%,transparent)] transition-all text-sm flex items-center gap-2"
             >
               <Icons.Trash size={16} />
               清空收藏
